@@ -309,7 +309,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.96);
+  background: #ffffff;
   padding: 0;
   visibility: visible;
 }
@@ -323,7 +323,7 @@
   position: relative;
   width: 100%;
   height: 100%;
-  background: transparent;
+  background: #ffffff;
   border-radius: 0;
   padding: 0;
   box-shadow: none;
@@ -335,7 +335,7 @@
   object-fit: cover;
   border-radius: 0;
   display: block;
-  background: black;
+  background: #ffffff;
 }
 
 .intro-video-prompt {
