@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Gemanti - Masukkan Nama{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="/static/css/nama.css">
+{% endblock %}
+
+{% block body_class %}page-nama{% endblock %}
+
+{% block content %}
+
+  <header class="brand">
+    <img class="brand-logo" src="/static/img/logo.png" alt="Gemanti - Game Tembang Kurang Interaktif">
+  </header>
+
+  <section class="nama-screen">
+    <div class="nama-card">
+      <h1>Halo, siapa namamu?</h1>
+      <p>Masukkan nama untuk mulai bermain.</p>
+      <form id="playerNameForm" class="nama-form">
+        <input id="playerNameInput" name="playerName" type="text" placeholder="Ketik nama kamu" autocomplete="name" required>
+        <button id="playerNameSubmit" type="submit" class="btn btn--primary">Lanjut</button>
+      </form>
+<!-- Tombol Fullscreen (Kanan Bawah) -->
+<button id="fullscreenButton" class="bottom-right" type="button" aria-label="Buka layar penuh">
+  <img src="/static/img/fs.png" alt="Layar penuh">
+</button>
+
+<!-- Speaker (Kiri Atas) -->
+<button class="icon-button top-left" id="soundButton" type="button" aria-label="Matikan suara">
+  <img id="soundIcon" src="/static/img/speaker_aktif.png" alt="">
+</button>
+
+<!-- Home (Kanan Atas) -->
+<button class="icon-button top-right" id="profileButton" type="button" aria-label="Profil">
+  <img src="/static/img/home.png" alt="">
+</button>
+    </div>
+  </section>
+
+  <div id="introVideoOverlay" class="intro-video-overlay hidden" aria-hidden="true">
+    <div class="intro-video-panel">
+      <video id="introVideo" playsinline preload="auto" poster="/static/img/logo.png">
+        <source src="/video/vidio_logo.mp4" type="video/mp4">
+        Video tidak didukung oleh browser ini.
+      </video>
+      <button id="introVideoStartButton" class="intro-video-start-button" type="button">Lanjut</button>
+    </div>
+  </div>
+
+{% endblock %}

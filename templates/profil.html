@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}Gemanti - Profil{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="/static/css/profil.css">
+{% endblock %}
+
+{% block content %}
+  <section class="profil-page direct-view" aria-label="Profil">
+    <div class="profil-panel">
+      <div class="profil-profil-page">
+        <h1>Gemati</h1>
+
+       <div class="profil-image-placeholder profil-image-placeholder--centered">
+            <div class="profil-image-container">
+              <img src="/static/img/aduhhhh.png" alt="Gambar tengah" />
+            </div>
+          </div>
+
+        <div class="profil-description-actions actions-split">
+          <a class="page-arrow" href="/profil/selanjutnya" aria-label="Lanjut ke halaman selanjutnya">
+            <span>Selanjutnya</span>
+            <img src="/static/img/kanan.png" alt="Panah kanan" />
+          </a>
+        </div>
+      </div>
+
+      <button
+        id="fullscreenButton"
+        type="button"
+        aria-label="Buka layar penuh"
+        class="bottom-right"
+      >
+        <img src="/static/img/fs.png" alt="Layar penuh">
+      </button>
+      <style>
+  .icon-button {
+    position: absolute;
+    top: 0.5rem;
+    width: clamp(48px, 10vw, 60px);
+    aspect-ratio: 1;
+    border: none;
+    background: transparent;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .top-left {
+    left: 0.5rem;
+  }
+
+  .top-right {
+    right: 0.5rem;
+  }
+
+  .icon-button img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+  }
+</style>
+
+<!-- Speaker (Kiri Atas) -->
+<button class="icon-button top-left" id="soundButton" type="button" aria-label="Matikan suara">
+  <img id="soundIcon" src="/static/img/speaker_aktif.png" alt="">
+</button>
+
+<!-- Home (Kanan Atas) -->
+<button class="icon-button top-right" id="profileButton" type="button" aria-label="Profil">
+  <img src="/static/img/home.png" alt="">
+</button>
+      </div>
+    </div>
+  </section>
+{% endblock %}

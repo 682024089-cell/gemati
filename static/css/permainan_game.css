@@ -1,0 +1,883 @@
+﻿.permainan-page {
+  margin: 0 auto;
+  width: min(100%, 520px);
+  max-width: min(72vw, 520px);
+  padding: clamp(14px, 1.3vw, 20px);
+  display: grid;
+  gap: 0.85rem;
+  align-items: stretch;
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 18px 32px rgba(33, 33, 33, 0.14);
+  border: 1px solid rgba(148, 106, 44, 0.18);
+}
+
+.permainan-page,
+.math-panel,
+.question-row,
+.bottom-row,
+.calculator-panel,
+.helper-panel,
+.math-card {
+  width: 100%;
+}
+
+.game-menu-page.direct-view.permainan-top .menu-panel {
+  width: min(92vw, 700px);
+  padding: clamp(12px, 1.6vw, 18px);
+}
+
+.menu-panel .permainan-page {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+.permainan-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.page-tag {
+  margin: 0 auto 0.75rem;
+  display: inline-block;
+  color: #9a5f24;
+  background: rgba(244, 177, 95, 0.18);
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.permainan-header h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 3.4vw, 3.2rem);
+  color: #6a2f21;
+  line-height: 1.05;
+}
+
+.page-copy {
+  margin: 1rem auto 0;
+  max-width: 680px;
+  color: #423026;
+  font-size: clamp(1rem, 1.7vw, 1.2rem);
+  line-height: 1.8;
+}
+
+.math-panel {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.6rem;
+}
+
+.question-row,
+.bottom-row {
+  display: grid;
+  gap: 1rem;
+}
+
+.question-row {
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  gap: 1.2rem;
+}
+
+.bottom-row {
+  grid-template-columns: minmax(280px, 1.6fr) minmax(220px, 0.9fr);
+  align-items: stretch;
+  gap: 0.8rem;
+}
+
+.helper-panel {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  align-items: stretch;
+  justify-items: stretch;
+  gap: 0.7rem;
+  padding: 0.85rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  border-radius: 24px;
+  background: linear-gradient(180deg, #fffdf7 0%, #ffeecf 100%);
+  border: 1px solid rgba(148, 106, 44, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.calculator-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: stretch;
+  width: 100%;
+  min-width: 0;
+}
+
+/* Make the help video fill the calculator column height so it matches the helper panel */
+.help-video-container {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Stronger selector to override other page rules so video fills column height */
+.permainan-page .calculator-column .help-video-container video {
+  height: 100% !important;
+  width: 100% !important;
+  max-height: none !important;
+  max-width: none !important;
+  object-fit: cover !important;
+  border-radius: 14px !important;
+  background: #000 !important;
+}
+
+/* Remove extra margins/padding that can create empty space inside the video container */
+.permainan-page .calculator-column .help-video-container {
+  padding: 0 !important;
+  margin: 0 !important;
+  align-items: stretch !important;
+}
+
+.calculator-panel {
+  padding: 0.9rem;
+  border-radius: 24px;
+  background: linear-gradient(180deg, #fffdf7 0%, #fff8ee 100%);
+  border: 1px solid rgba(148, 106, 44, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  max-width: 270px;
+}
+
+.helper-pieces.helper-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(50px, 1fr));
+  gap: 5px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  grid-auto-rows: 66px;
+  justify-items: center;
+  align-content: start;
+}
+
+/* layout-b custom grid is handled by permainan_hp_layout.css for Permainan HP pages */
+
+.helper-plate {
+  min-height: 0;
+  align-content: start;
+}
+
+.action-bin {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  gap: 0.4rem;
+  min-height: 120px;
+  padding: 0.85rem 1rem;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.92);
+  border: 2px dashed rgba(148,106,44,0.28);
+  color: #6a2f21;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.74);
+}
+
+@media (min-width: 1024px) {
+  .question-row {
+    grid-template-columns: 1fr;
+  }
+
+  .bottom-row {
+    grid-template-columns: minmax(260px, 1.5fr) minmax(200px, 1fr);
+    align-items: start;
+    gap: 1rem;
+  }
+
+  .calculator-column {
+    justify-self: stretch;
+    max-width: 100%;
+  }
+
+  .calculator-panel {
+    min-height: 100%;
+  }
+
+  .number-pad {
+    grid-template-columns: repeat(3, minmax(60px, 1fr));
+    gap: 0.85rem;
+  }
+}
+
+.helper-piece.dragging {
+  opacity: 0.95;
+  cursor: grabbing;
+  box-shadow: 0 26px 42px rgba(101, 58, 23, 0.22);
+  transform: scale(1.04);
+}
+
+.helper-piece:hover {
+  transform: translateY(-2px) scale(1.02);
+  filter: brightness(1.03);
+}
+
+.helper-piece:active {
+  transform: scale(0.98);
+}
+
+.helper-panel-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.65rem;
+  align-items: center;
+}
+
+.helper-panel-head .helper-refresh {
+  justify-self: end;
+  min-width: auto;
+  min-height: auto;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(148, 106, 44, 0.18);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 6px 14px rgba(97, 58, 19, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  padding: 0 !important;
+}
+
+.helper-panel-head .helper-refresh:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 1);
+}
+
+.helper-panel-head .helper-refresh img {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.helper-panel-head .helper-refresh.btn,
+.helper-panel-head .helper-refresh.btn--secondary {
+  padding: 0 !important;
+  width: 42px !important;
+  height: 42px !important;
+  min-width: auto !important;
+  min-height: auto !important;
+}
+
+.helper-hint {
+  margin: 0;
+  color: #5b3e24;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.helper-plate.restore-highlight {
+  box-shadow: inset 0 0 0 3px rgba(86, 166, 80, 0.35);
+}
+
+.math-card {
+  padding: 1rem 1.2rem;
+  background: linear-gradient(180deg, #fffef9, #fff8ee);
+  border: 1px solid rgba(148,106,44,0.08);
+  border-radius: 14px;
+}
+
+.math-question-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  margin-top: 0.8rem;
+}
+
+.math-question {
+  margin: 0;
+  font-size: clamp(1.4rem, 2.2vw, 2.2rem);
+  font-weight: 800;
+  text-align: left;
+  color: #2c1a10;
+}
+
+.answer-inline {
+  min-width: 2.2ch;
+  font-size: clamp(1.4rem, 2.2vw, 2.2rem);
+  font-weight: 800;
+  color: #8f3f1f;
+  border-bottom: 3px solid rgba(148, 106, 44, 0.24);
+  padding: 0 0.2rem 0.1rem;
+}
+
+/* Larger question style for specific rows */
+.math-question-row.large-question .math-question,
+.math-question-row.large-question .answer-inline {
+  font-size: clamp(2rem, 3vw, 3.2rem);
+  font-weight: 900;
+}
+
+.math-label {
+  font-weight: 700;
+  color: #5b3e24;
+}
+
+.helper-pieces.helper-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+  gap: 8px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  grid-auto-rows: 92px;
+}
+
+.helper-piece {
+  width: 100%;
+  max-width: 84px;
+  height: 100%;
+  max-height: 92px;
+  padding: 0;
+  cursor: grab;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: none;
+  touch-action: none;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+.helper-piece.dragging {
+  cursor: grabbing;
+  transform: scale(1.03);
+}
+
+.helper-piece--removed {
+  cursor: grab;
+  opacity: 0.25 !important;
+  filter: grayscale(1);
+}
+
+.action-bin .bin-storage {
+  display: none;
+}
+
+.action-bin .bin-storage .helper-piece {
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  min-height: 34px;
+  padding: 0;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.95);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+  opacity: 0.84;
+}
+
+.action-bin .bin-storage .helper-piece:not(:first-child) {
+  display: none;
+}
+
+.action-bin .bin-storage .helper-piece:first-child {
+  cursor: grab;
+}
+
+.action-bin .bin-storage .helper-piece:first-child .helper-icon {
+  width: 68%;
+  height: 68%;
+}
+
+.bin-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.22rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.88);
+  border: 1px solid rgba(148,106,44,0.18);
+  font-weight: 800;
+  color: #5b3e24;
+  margin-top: 0.5rem;
+  cursor: grab;
+  user-select: none;
+}
+
+.action-bin--minus .bin-count,
+.action-bin--plus .bin-count,
+.action-bin.drag-over .bin-count,
+.action-bin--minus.action-bin.drag-over .bin-count,
+.action-bin--plus.action-bin.drag-over .bin-count {
+  color: #fff !important;
+}
+
+.action-bin--minus .bin-count .bin-sign,
+.action-bin--plus .bin-count .bin-sign,
+.action-bin--minus .bin-count .bin-count-value,
+.action-bin--plus .bin-count .bin-count-value,
+.action-bin.drag-over .bin-count .bin-sign,
+.action-bin.drag-over .bin-count .bin-count-value {
+  color: inherit !important;
+}
+
+.bin-count:active {
+  cursor: grabbing;
+}
+
+.bin-sign {
+  font-size: 1rem;
+}
+
+.bin-count-value {
+  font-size: 1.1rem;
+}
+
+.helper-piece--empty {
+  border: 2px dashed rgba(138,92,50,0.18);
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(250,240,220,0.2));
+  opacity: 0.6;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.helper-piece--empty.drag-over,
+.action-bin.drag-over .bin-storage {
+  border-color: rgba(86,166,80,0.8);
+  background: rgba(237,246,235,0.8);
+}
+
+.restore-token-clone {
+  transition: transform 120ms linear, opacity 120ms linear;
+  opacity: 0.95;
+}
+
+
+
+.helper-piece[data-sign="-"] {
+  justify-content: flex-end;
+  padding-right: 2px;
+}
+
+.helper-piece[data-sign="+"] {
+  justify-content: flex-start;
+  padding-left: 2px;
+}
+
+.action-bins {
+  width: 100%;
+  display: grid;
+  align-content: start;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.action-bin {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  gap: 0.5rem;
+  min-height: 150px;
+  padding: 1rem 1.2rem;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.92);
+  border: 2px dashed rgba(148,106,44,0.28);
+  color: #6a2f21;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.74);
+}
+
+.action-bin--plus {
+  background: rgba(229,247,231,0.95);
+}
+
+.action-bin--minus {
+  background: rgba(247,231,231,0.95);
+}
+
+.action-bin.drag-over {
+  background: rgba(255,237,209,0.95);
+  border-color: rgba(217,106,16,0.85);
+  transform: translateY(-2px);
+}
+
+.action-label-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.action-sign {
+  color: #a64c3c;
+}
+
+.helper-piece--empty {
+  min-height: 92px;
+}
+
+.restore-token {
+  min-width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #fffaf2, #f7e6cf);
+  border: 1px solid rgba(148,106,44,0.12);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: #6a2f21;
+  box-shadow: 0 4px 8px rgba(60,30,10,0.06);
+  cursor: pointer;
+}
+
+.helper-removed-label {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: -0.75rem;
+  font-size: 0.9rem;
+  color: #8a5c32;
+  text-align: center;
+}
+
+.helper-removed-label .restore-piece {
+  padding: 0.45rem 0.75rem;
+  border: 1px solid rgba(138,92,50,0.25);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.95);
+  color: #6a2f21;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+@media (max-width: 720px) {
+  .helper-pieces.helper-grid {
+    grid-template-columns: repeat(auto-fit, minmax(48px, 1fr));
+    max-width: 100%;
+    gap: 6px;
+  }
+
+  .helper-piece {
+    width: 100%;
+    max-width: 56px;
+    height: 56px;
+  }
+
+  .helper-piece .helper-icon {
+    width: 76%;
+    height: 76%;
+  }
+}
+
+.number-pad {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(46px, 1fr));
+  gap: 0.55rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+.pad-key {
+  padding: 0.75rem 0;
+  border-radius: 16px;
+  border: 0;
+  background: linear-gradient(180deg, #ffd36f 0%, #f2a421 100%);
+  color: #412612;
+  font-size: 1.18rem;
+  font-weight: 800;
+  box-shadow: 0 8px 0 rgba(132, 72, 22, 0.18);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.calculator-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding-top: 0.5rem;
+}
+
+.calculator-actions--single {
+  justify-content: center;
+}
+
+.calculator-actions .btn {
+  flex: 0 1 auto;
+  max-width: 220px;
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 18px;
+  font-size: 0.96rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.calculator-actions .btn.btn--primary {
+  background: linear-gradient(180deg, #ffb74d 0%, #f2920a 100%);
+  color: #fff;
+  box-shadow: 0 10px 0 rgba(174, 101, 16, 0.16);
+}
+
+.calculator-actions .btn.btn--primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 0 rgba(174, 101, 16, 0.18);
+}
+
+@media (max-width: 720px) {
+  .calculator-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .calculator-actions .btn {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+.pad-key:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 0 rgba(132, 72, 22, 0.2);
+  filter: brightness(1.03);
+}
+
+.pad-key:active {
+  transform: translateY(1px);
+  box-shadow: 0 6px 0 rgba(132, 72, 22, 0.18);
+}
+
+.pad-key.operator {
+  background: linear-gradient(180deg, #f7e1b8, #e2bc77);
+}
+
+.helper-piece {
+  font-family: inherit;
+}
+
+.helper-piece::after {
+  display: none;
+}
+
+.helper-piece .helper-icon {
+  width: 70%;
+  height: 70%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: inherit;
+  margin: 0;
+}
+
+.helper-piece[data-sign="-"] .helper-icon,
+.helper-piece[data-sign="+"] .helper-icon {
+  margin: 0;
+}
+
+.pad-key.delete {
+  background: linear-gradient(180deg, #f1cfd4, #e3a8af);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.6rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f6b55b 0%, #d96a10 100%);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 16px rgba(162, 78, 16, 0.2);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 18px rgba(162, 78, 16, 0.24);
+  filter: brightness(1.03);
+}
+
+.btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 6px 12px rgba(162, 78, 16, 0.2);
+}
+
+@media (max-width: 860px) {
+  .math-panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .permainan-page {
+    margin: 1rem auto;
+    padding: 1.5rem;
+  }
+
+  .question-row,
+  .bottom-row {
+    grid-template-columns: 1fr;
+  }
+
+  .question-row {
+    gap: 0.75rem;
+  }
+
+  .bottom-row {
+    gap: 1rem;
+  }
+
+  .math-card,
+  .calculator-panel,
+  .helper-panel {
+    width: 100%;
+  }
+
+  .helper-piece {
+    width: 100%;
+    max-width: 56px;
+    height: 56px;
+  }
+
+  .helper-piece[data-sign="-"] .helper-icon,
+  .helper-piece[data-sign="+"] .helper-icon {
+    margin: 0;
+  }
+
+  .helper-piece--empty {
+    min-height: 56px;
+  }
+
+  .number-pad {
+    max-width: 100%;
+    grid-template-columns: repeat(3, minmax(50px, 1fr));
+    gap: 0.6rem;
+  }
+
+  .pad-key {
+    font-size: 1.05rem;
+    padding: 0.85rem 0.2rem;
+  }
+
+  .math-question {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+  }
+
+  .answer-inline {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+  }
+
+  .action-bins {
+    grid-template-columns: 1fr;
+  }
+
+  .action-bin {
+    width: 100%;
+  }
+
+  .calculator-actions .btn {
+    max-width: 100%;
+    flex: 1 1 0;
+  }
+}
+
+@media (max-width: 540px) {
+  .permainan-page {
+    margin: 0.75rem 0.5rem;
+    padding: 1rem;
+  }
+
+  .page-copy {
+    font-size: 1rem;
+  }
+
+  .helper-piece {
+    width: 100%;
+    max-width: 52px;
+    height: 52px;
+  }
+
+  .pad-key {
+    font-size: 1rem;
+    padding: 0.75rem 0.2rem;
+  }
+
+  .calculator-actions .btn {
+    padding: 0.85rem 1rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .permainan-page {
+    margin: 0.75rem 0.5rem;
+    padding: 1.25rem;
+    border-radius: 20px;
+  }
+
+  .page-copy {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .helper-panel,
+  .calculator-panel,
+  .math-card {
+    padding: 1rem;
+  }
+
+  /* layout-b custom grid is handled by permainan_hp_layout.css for Permainan HP pages */
+
+  .helper-piece {
+    width: 100%;
+    max-width: 52px;
+    height: 52px;
+  }
+
+  .number-pad {
+    grid-template-columns: repeat(3, minmax(50px, 1fr));
+    gap: 0.55rem;
+  }
+
+  .pad-key {
+    font-size: 1.05rem;
+    padding: 0.75rem 0.15rem;
+  }
+
+  .math-question {
+    font-size: 2rem;
+  }
+
+  .answer-inline {
+    font-size: 2rem;
+  }
+
+  .calculator-actions {
+    gap: 0.5rem;
+  }
+
+  .btn {
+    font-size: 0.95rem;
+  }
+}

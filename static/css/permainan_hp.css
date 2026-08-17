@@ -1,0 +1,447 @@
+.calculator-display {
+  cursor: pointer;
+}
+
+.game-menu-page.direct-view.permainan-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100dvh;
+  padding: clamp(16px, 2.5vw, 24px) 0;
+}
+
+.game-menu-page.direct-view.permainan-top .menu-panel {
+  width: min(96vw, 1040px) !important;
+  max-width: 1040px !important;
+  margin: 0 auto !important;
+  padding: clamp(24px, 3.5vw, 34px) !important;
+  background: rgba(255, 255, 255, 0.94) !important;
+  border: 1px solid rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 24px 60px rgba(12, 18, 24, 0.16) !important;
+}
+
+.stage:fullscreen .game-menu-page.direct-view.permainan-top .menu-panel,
+.stage:-webkit-full-screen .game-menu-page.direct-view.permainan-top .menu-panel,
+.stage:-ms-fullscreen .game-menu-page.direct-view.permainan-top .menu-panel {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.permainan-page {
+  margin: 0 auto !important;
+}
+
+.math-top-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: start;
+}
+
+.math-question-column {
+  display: grid;
+  gap: 1rem;
+}
+
+.help-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.help-actions .btn {
+  min-width: 140px;
+}
+
+.help-row {
+  display: none;
+}
+
+.help-video-container {
+  display: block;
+  width: 100%;
+  max-width: 760px;
+  margin: 1rem auto 0;
+}
+
+.help-video-container.hidden {
+  display: none !important;
+}
+
+.help-video-container video {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  max-height: 420px;
+  background: #000;
+}
+
+.calculator-panel.hidden {
+  display: none !important;
+}
+
+.calculator-actions.hidden,
+.help-video-container.hidden,
+.calculator-panel.hidden {
+  display: none !important;
+}
+
+@media (max-width: 900px) {
+  .permainan-page {
+    width: min(100%, 460px);
+    max-width: min(96vw, 460px);
+    padding: clamp(8px, 2.2vw, 12px);
+    gap: 0.35rem;
+    border-radius: 22px;
+  }
+
+  .game-menu-page.direct-view.permainan-top .menu-panel {
+    width: min(100vw, 500px);
+    padding: 4px;
+    max-height: calc(100svh - 18px);
+    max-height: calc(100dvh - 18px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .permainan-header {
+    margin-bottom: 0.65rem;
+  }
+
+  .permainan-header h1 {
+    font-size: clamp(1.7rem, 6vw, 2.1rem);
+  }
+
+  .page-copy {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .math-panel {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  .question-row,
+  .bottom-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.55rem !important;
+  }
+
+  .calculator-column {
+    order: -1 !important;
+    width: 100% !important;
+  }
+
+  .helper-panel,
+  .calculator-panel {
+    width: 100%;
+  }
+
+  .math-card,
+  .helper-panel,
+  .calculator-panel {
+    padding: 0.65rem;
+    border-radius: 14px;
+  }
+
+  .symbol-description {
+    display: grid;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+
+  .symbol-description p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    color: #4f3725;
+    font-size: clamp(1rem, 2.5vw, 1.15rem);
+    line-height: 1.6;
+  }
+
+  .symbol-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 16px;
+    background: rgba(255, 197, 102, 0.18);
+    color: #6a2f21;
+    font-size: 1.25rem;
+    font-weight: 800;
+    padding: 0.25rem;
+  }
+
+  .symbol-icon--zero {
+    background: rgba(255, 224, 186, 0.4);
+    color: #7a4428;
+  }
+
+  .math-question-row.large-question .math-question,
+  .math-question-row.large-question .answer-inline {
+    font-size: clamp(1.65rem, 7vw, 2.2rem);
+  }
+
+  .calculator-display {
+    cursor: pointer;
+  }
+
+  .help-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+  }
+
+  .help-video-container {
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 720px) {
+    .math-top-row {
+      grid-template-columns: 1fr !important;
+      gap: 0.7rem !important;
+    }
+
+    .help-actions {
+      width: 100%;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 0.65rem;
+    }
+
+    .help-actions .btn {
+      min-width: 0 !important;
+      flex: 1 1 48%;
+      max-width: 48%;
+    }
+
+  .math-question-row.large-question .math-question,
+  .math-question-row.large-question .answer-inline {
+    font-size: clamp(1.45rem, 6.8vw, 1.85rem);
+  }
+
+  .help-video-container video {
+    width: 100%;
+    border-radius: 14px;
+    max-height: 260px;
+    background: #000;
+  }
+
+  .calculator-panel.hidden {
+    display: none !important;
+  }
+
+  .helper-panel {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .helper-plate {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .helper-pieces.helper-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(40px, 1fr));
+    width: 100%;
+    max-width: 100%;
+    gap: 3px;
+    grid-auto-rows: 46px;
+    margin: 0;
+    justify-items: center;
+  }
+
+  .helper-piece {
+    width: 100%;
+    max-width: 52px;
+    height: 52px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .helper-piece .helper-icon {
+    width: 80%;
+    height: 80%;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0;
+  }
+
+  .helper-piece--empty {
+    min-height: 52px;
+  }
+
+  .action-bins {
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem;
+  }
+
+  .action-bin {
+    width: 100%;
+    min-height: 116px;
+    aspect-ratio: 1.8 / 1;
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 520px) {
+    .action-bins {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+
+    .action-bin {
+      min-height: 130px;
+      padding: 0.95rem 0.9rem;
+    }
+  }
+
+  .number-pad {
+    width: 100%;
+    gap: 0.6rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .pad-key {
+    padding: 0.8rem 0;
+    font-size: 1.1rem;
+  }
+
+  .calculator-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.55rem;
+  }
+
+  .calculator-actions .btn {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 800px) and (orientation: landscape) {
+  .game-menu-page.direct-view.permainan-top {
+    min-height: 100vh;
+    padding: 0rem 0.25rem 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .game-menu-page.direct-view.permainan-top .menu-panel {
+    width: min(100vw, 780px);
+    padding: 10px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 24px;
+  }
+
+  .permainan-page {
+    width: min(100%, 760px);
+    max-width: min(96vw, 760px);
+    padding: clamp(18px, 2.5vw, 24px);
+    border-radius: 28px;
+    min-height: 0;
+    align-self: center;
+  }
+
+  .math-top-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .help-actions {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .help-actions .btn {
+    width: 48%;
+    min-width: 0;
+  }
+
+  .math-panel {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 1rem;
+  }
+
+  .question-row,
+  .bottom-row {
+    gap: 0.9rem;
+  }
+
+  .question-row {
+    grid-template-columns: 1fr;
+  }
+
+  .bottom-row {
+    grid-template-columns: 1fr;
+  }
+
+  .helper-panel,
+  .calculator-panel,
+  .math-card {
+    padding: 1rem;
+  }
+
+  .helper-pieces.helper-grid {
+    grid-template-columns: repeat(auto-fit, minmax(58px, 1fr));
+    gap: 6px;
+    grid-auto-rows: 64px;
+  }
+
+  .helper-piece {
+    max-width: 58px;
+    height: 58px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .helper-piece .helper-icon {
+    width: 80%;
+    height: 80%;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0;
+  }
+
+  .action-bins {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .action-bin {
+    min-height: 120px;
+    padding: 0.85rem;
+  }
+}

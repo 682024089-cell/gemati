@@ -1,0 +1,338 @@
+.page-home #profileButton {
+  display: none !important;
+}
+
+.page-home .fullscreen-action {
+  top: auto;
+  right: clamp(12px, 2vw, 28px);
+  bottom: clamp(12px, 2vw, 28px);
+}
+
+.brand {
+  position: absolute;
+  top: 0.6%;
+  left: 50%;
+  width: min(29%, 380px);
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 25;
+}
+
+.brand-logo {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 10px rgba(104, 47, 20, 0.24));
+  /* smoother, slower floating: gentle bob + subtle sway + tiny rotation */
+  animation: logo-float3 8s cubic-bezier(.22,.9,.37,.99) infinite;
+  will-change: transform;
+  transform-origin: 50% 50%;
+}
+
+.menu-wrap {
+  position: absolute;
+  left: 50%;
+  bottom: 14%;
+  z-index: 28;
+  width: min(42%, 520px);
+  max-width: 520px;
+  aspect-ratio: 540 / 420;
+  transform: translateX(-50%);
+}
+
+.menu-card {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+  transition: transform 0.18s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.menu-card {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+  transition: transform 0.18s ease;
+}
+
+.menu-card:disabled {
+  cursor: default;
+}
+
+.menu-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+@keyframes logo-float3 {
+  0% { transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+  20% { transform: translate3d(-6px,-8px,0) rotate(-0.6deg) scale(1.005); }
+  40% { transform: translate3d(-10px,-2px,0) rotate(-0.35deg) scale(1.002); }
+  60% { transform: translate3d(-6px,6px,0) rotate(0.35deg) scale(1); }
+  80% { transform: translate3d(6px,4px,0) rotate(0.4deg) scale(1.003); }
+  100% { transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+}
+
+/* accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .brand-logo { animation: none !important; }
+}
+
+/* Keep the start button visible on small screens */
+@media (max-width: 720px) {
+  .menu-wrap {
+    bottom: 8% !important;
+    width: min(86%, 520px);
+  }
+}
+
+@media (max-width: 480px) {
+  .brand {
+    top: 1.2%;
+    width: min(70%, 260px);
+  }
+
+  .brand-logo {
+    filter: drop-shadow(0 10px 8px rgba(104, 47, 20, 0.20));
+  }
+
+  .top-action {
+    top: 1.4%;
+  }
+
+  .icon-button {
+    width: clamp(46px, 10vw, 56px);
+  }
+
+  .menu-wrap {
+    bottom: 8%;
+    width: min(82%, 280px);
+  }
+
+  .leaf {
+    width: 28%;
+  }
+
+  .leaf-left {
+    left: -3%;
+    bottom: 8%;
+  }
+
+  .leaf-right {
+    right: -3%;
+  }
+
+  .front-ground {
+    bottom: -18%;
+    height: 46%;
+  }
+
+  .janur {
+    width: 22%;
+  }
+
+  .janur-left {
+    left: 16%;
+  }
+
+  .janur-right {
+    right: 16%;
+  }
+
+  .temple-image,
+  .tower-image,
+  .people-image,
+  .wayang-image {
+    width: 42%;
+  }
+
+  .temple-image {
+    left: 8%;
+    bottom: 18%;
+  }
+
+  .tower-image {
+    right: 8%;
+    bottom: 18%;
+  }
+
+  .people-image,
+  .wayang-image {
+    bottom: 16%;
+  }
+}
+
+@media (max-width: 360px) {
+  .brand {
+    width: min(82%, 220px);
+  }
+
+  .menu-wrap {
+    width: min(90%, 260px);
+    bottom: 10%;
+  }
+
+  .icon-button {
+    width: clamp(42px, 12vw, 52px);
+  }
+
+  .front-ground {
+    bottom: -16%;
+    height: 52%;
+  }
+
+  .janur {
+    width: 24%;
+  }
+
+  .temple-image,
+  .tower-image,
+  .people-image,
+  .wayang-image {
+    width: 46%;
+  }
+}
+
+@media (max-width: 420px) {
+  .brand {
+    top: 1.6%;
+    width: min(86%, 240px);
+  }
+
+  .menu-wrap {
+    bottom: 6%;
+    width: min(88%, 300px);
+    max-width: 320px;
+  }
+
+  .background-image {
+    object-position: top center;
+  }
+
+  .front-ground {
+    bottom: -12%;
+    height: 50%;
+  }
+
+  .leaf-left {
+    left: 0;
+  }
+
+  .leaf-right {
+    right: 0;
+  }
+
+  .temple-image,
+  .tower-image,
+  .people-image,
+  .wayang-image {
+    width: 44%;
+  }
+
+  .temple-image {
+    left: 6%;
+    bottom: 18%;
+  }
+
+  .tower-image {
+    right: 6%;
+    bottom: 18%;
+  }
+
+  .people-image,
+  .wayang-image {
+    bottom: 14%;
+  }
+
+  .bottom-decor.food-image {
+    left: 2%;
+    bottom: 2%;
+    width: 32%;
+  }
+
+  .bottom-decor.music-image {
+    right: 2%;
+    bottom: 2%;
+    width: 30%;
+  }
+}
+
+@media (max-width: 360px) {
+  .brand {
+    width: min(88%, 200px);
+  }
+
+  .menu-wrap {
+    width: min(92%, 260px);
+    bottom: 8%;
+  }
+
+  .front-ground {
+    bottom: -14%;
+    height: 52%;
+  }
+
+  .temple-image,
+  .tower-image,
+  .people-image,
+  .wayang-image {
+    width: 48%;
+  }
+
+  .bottom-decor.food-image {
+    width: 30%;
+    bottom: 1%;
+  }
+
+  .bottom-decor.music-image {
+    width: 28%;
+    bottom: 1%;
+  }
+}
+
+/* Ensure home page ground and grass match the nama page visuals */
+.front-ground {
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 38vh;
+  bottom: -2%;
+  object-fit: cover;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.leaf {
+  position: absolute;
+  bottom: -2%;
+  width: 40%;
+  height: auto;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.leaf-left { left: 0%; }
+.leaf-right { right: 0%; }

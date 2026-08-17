@@ -1,0 +1,105 @@
+.game-menu-page.direct-view {
+  position: relative;
+  inset: auto;
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1.5rem 3rem;
+  z-index: 200000 !important;
+}
+
+.bottom-right {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  width: clamp(48px, 10vw, 60px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottom-right img {
+  width: 30%;
+  height: 30%;
+  object-fit: contain;
+}
+
+.menu-panel {
+  width: min(98vw, 1280px);
+  min-height: 88vh;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(6px) saturate(125%);
+  border-radius: 32px;
+  padding: clamp(28px, 4vw, 64px) clamp(24px, 5vw, 64px);
+  box-shadow: 0 36px 80px rgba(12, 18, 24, 0.22);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200001 !important;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  position: relative;
+}
+
+.menu-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.game-menu-items {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
+  align-items: start;
+  justify-items: center;
+  gap: clamp(18px, 3.2vw, 48px);
+  width: 100%;
+}
+
+.game-menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  max-width: 340px;
+}
+
+.game-menu-item img {
+  width: clamp(140px, 20vw, 320px);
+  height: auto;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.game-menu-item:hover {
+  transform: translateY(-6px) scale(1.02);
+  transition: transform 180ms ease;
+}
+
+@media (max-width: 880px) {
+  .game-menu-items {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 18px;
+  }
+
+  .menu-panel {
+    min-height: auto;
+    padding: 20px;
+  }
+
+  .game-menu-item img {
+    width: min(58vw, 260px);
+  }
+}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Gemanti - Home{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="/static/css/home.css">
+{% endblock %}
+
+{% block body_class %}page-home{% endblock %}
+
+{% block content %}
+
+  <div class="menu-wrap">
+    <a class="menu-card" id="menuButton" href="/nama?intro=1" aria-label="Mulai permainan">
+      <img class="menu-image" src="/static/img/mulai.png" alt="Mulai">
+    </a>
+  </div>
+
+{% endblock %}

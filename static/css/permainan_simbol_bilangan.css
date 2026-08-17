@@ -1,0 +1,455 @@
+.game-menu-page.direct-view.permainan-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: clamp(20px, 4vw, 40px);
+}
+
+.game-menu-page.direct-view.permainan-top .menu-panel {
+  width: min(100%, 940px);
+  max-width: 940px;
+  margin: 0 auto;
+  padding: clamp(24px, 3vw, 40px);
+  background: #ffffff;
+  border-radius: 40px;
+  box-shadow: 0 24px 56px rgba(33, 33, 33, 0.12);
+  border: 1px solid rgba(148, 106, 44, 0.14);
+}
+
+.permainan-page {
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  display: grid;
+  gap: 1.5rem;
+  align-items: stretch;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+.permainan-header {
+  text-align: center;
+  margin-bottom: -1rem;
+}
+
+.page-tag {
+  margin: 0 auto 0.75rem;
+  display: inline-block;
+  color: #9a5f24;
+  background: rgba(244, 177, 95, 0.18);
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.permainan-header h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 3.4vw, 3.2rem);
+  color: #6a2f21;
+  line-height: 1.05;
+}
+
+.page-copy {
+  margin: 1rem auto 0;
+  max-width: 680px;
+  color: #423026;
+  font-size: clamp(1rem, 1.7vw, 1.2rem);
+  line-height: 1.8;
+}
+
+.math-panel {
+  display: grid;
+  gap: 1.8rem;
+  grid-template-columns: 1fr;
+}
+
+.math-panel .simbol-card {
+  grid-column: 1 / -1;
+}
+
+.math-panel .image-question-card,
+.math-panel .answer-card {
+  width: 100%;
+}
+
+@media (min-width: 900px) {
+  .math-panel {
+    grid-template-columns: 1.55fr 1fr;
+  }
+}
+
+.math-card {
+  padding: 1.25rem 1rem;
+  border-radius: 30px;
+  background: linear-gradient(180deg, hsl(42, 100%, 95%) 0%, #fff3d1 100%);
+  border: 1px solid #fff3d1 ;
+  box-shadow: 0 16px 28px #fff3d1 ;
+  width: 100%;
+}
+
+.symbol-description {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: -5rem;
+  padding: 0.5rem 0 1rem;
+}
+
+.symbol-description > .symbol-row:nth-child(1) {
+  grid-column: 1;
+}
+
+.symbol-description > .symbol-row:nth-child(2) {
+  grid-column: 2;
+}
+
+.symbol-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: -5rem;
+  min-height: 64px;
+  padding: 0.75rem 0.75rem;
+}
+
+.symbol-row:not(.symbol-row--center) {
+  width: 100%;
+}
+
+.symbol-row--center {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  padding: 1rem 0.75rem 0;
+}
+
+.symbol-row--center > .symbol-label,
+.symbol-row--center > .symbol-text {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.symbol-row--center .symbol-pill {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: rgba(255, 224, 186, 0.8);
+}
+
+.symbol-row--center .symbol-pill img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+}
+
+@media (min-width: 700px) {
+  .symbol-description {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .symbol-row {
+    flex-wrap: nowrap;
+    margin: 0;
+  }
+
+  .symbol-row--center {
+    justify-content: center;
+  }
+}
+
+.symbol-label,
+.symbol-text {
+  color: #6a2f21;
+  font-size: clamp(1rem, 2.2vw, 1.15rem);
+}
+
+.symbol-row:not(.symbol-row--center) .symbol-text {
+  margin-left: 0.75rem;
+}
+
+.symbol-label {
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.symbol-underline {
+  /* Use a continuous border-bottom so the underline does not break */
+  text-decoration: none;
+  display: inline-block;
+  border-bottom: 2px solid #6a2f21;
+  padding-bottom: 2px;
+  font-weight: 400;
+}
+
+.symbol-text {
+  opacity: 0.85;
+  text-align: center;
+}
+
+.symbol-value,
+.symbol-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  border-radius: 20px;
+  background: rgba(255, 197, 102, 0.35);
+  color: #6a2f21;
+  font-size: 2rem;
+  font-weight: 800;
+  padding: 0;
+}
+
+.symbol-value.symbol-icon {
+  color: #fff;
+}
+
+.symbol-pill {
+  width: 320px;
+  min-width: 180px;
+  max-width: 360px;
+  border-radius: 999px;
+  background: rgba(255, 224, 186, 0.75);
+}
+
+.symbol-value img,
+.symbol-pill img {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+}
+
+.symbol-icon--plus,
+.symbol-icon--minus {
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+}
+
+.symbol-icon--zero {
+  background: rgba(255, 224, 186, 0.6);
+  color: #7a4428;
+}
+
+/* Ensure no text appears bold inside the simbol card */
+.simbol-card, .simbol-card * {
+  font-weight: 400 !important;
+}
+
+.image-question-card {
+  padding: 1rem;
+  border-radius: 28px;
+  background: linear-gradient(180deg, #fff9e8, #fff4d6);
+  border: 1px solid rgba(148, 106, 44, 0.18);
+  box-shadow: inset 0 8px 12px rgba(255, 255, 255, 0.7);
+}
+
+.image-question-box {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.image-question-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  gap: 1rem;
+}
+
+@media (min-width: 900px) {
+  .image-question-row {
+    /* Arrange as: copy (left top), controls (right spanning two rows), thumb below copy */
+    grid-template-columns: 1fr 120px;
+    grid-template-rows: auto auto;
+    grid-template-areas: "copy controls" "thumb controls";
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .image-question-copy { grid-area: copy; }
+  .question-controls { grid-area: controls; display:flex; align-items:flex-start; justify-content:flex-end; }
+  .image-question-thumb { grid-area: thumb; }
+}
+
+.image-question-thumb {
+  margin: 0 auto;
+  border-radius: 28px;
+  width: 100%;
+  max-width: 100%;
+  min-height: auto;
+  padding: 0.8rem;
+  background: radial-gradient(circle at top, rgba(255, 250, 232, 0.95), rgba(235, 199, 112, 0.12));
+  border: 1px solid rgba(148, 106, 44, 0.18);
+  box-shadow: inset 0 8px 12px rgba(255, 255, 255, 0.7);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(56px, 1fr));
+  grid-auto-rows: 100px;
+  grid-auto-flow: row;
+  justify-items: center;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.symbol-item {
+  width: 100%;
+  max-width: 120px;
+  height: 120px;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Remove the boxed background for symbols inside the image question area */
+.image-question-thumb .symbol-item {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove the rounded pill background for symbol icons in the top simbol-card */
+.simbol-card .symbol-value,
+.simbol-card .symbol-pill {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  width: auto;
+  height: auto;
+  padding: 0;
+}
+
+.symbol-icon {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+}
+
+@media (max-width: 700px) {
+  .symbol-value,
+  .symbol-pill { width: 56px; height: 56px; font-size: 1.35rem; }
+  .symbol-pill { width: 140px; min-width: 90px; max-width: 140px; }
+  .symbol-value img, .symbol-pill img { width: 40px; height: 40px; }
+  .symbol-item { width: 84px; height: 84px; }
+  .symbol-icon { width: 48px; height: 48px; }
+}
+
+
+.image-question-thumb::-webkit-scrollbar {
+  height: 8px;
+}
+.image-question-thumb::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.08);
+  border-radius: 8px;
+}
+
+.question-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: 1rem;
+}
+
+.question-index {
+  font-weight: 400;
+  color: #6a2f21;
+}
+
+.image-question-copy {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.image-question-label {
+  margin: 0;
+  color: #6a2f21;
+  font-size: 1.05rem;
+  font-weight: 400;
+}
+
+.image-question-text {
+  margin: 0;
+  color: #6a2f21;
+  opacity: 0.88;
+  line-height: 1.5;
+}
+
+/* Answer card (input + keypad) */
+.answer-card .answer-instruction {
+  color: #6a2f21;
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+}
+
+.answer-card .answer-display {
+  min-height: 56px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid rgba(148,106,44,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: #6a2f21;
+  margin-bottom: 1rem;
+  padding: 0.6rem 0.8rem;
+}
+
+.numeric-keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.7rem;
+}
+
+.numeric-keypad .key {
+  padding: 0.95rem 0.75rem;
+  border-radius: 12px;
+  background: linear-gradient(180deg,#fff8e8,#fff3d1);
+  border: 1px solid rgba(213,157,84,0.2);
+  font-weight: 400;
+  font-size: 1.1rem;
+  color: #6a2f21;
+  cursor: pointer;
+}
+
+.numeric-keypad .key:active { transform: translateY(1px); }
+
+.numeric-keypad .key--back {
+  background: rgba(239, 87, 80, 0.12);
+}
+
+.numeric-keypad .key--minus {
+  background: rgba(255, 224, 186, 0.6);
+}
+
+.submit-row {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.submit-button {
+  width: 280px;
+  max-width: 100%;
+  padding: 0.95rem 1rem;
+  border-radius: 28px;
+  background: linear-gradient(180deg,#ffb75f,#ff9d2b);
+  border: none;
+  color: #fff;
+  font-weight: 400;
+  box-shadow: 0 8px 18px rgba(255,157,51,0.18);
+}

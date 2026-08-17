@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Gemanti{% endblock %}</title>
+  <link rel="stylesheet" href="/static/css/base.css">
+  {% block styles %}{% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+  <main id="stage" class="stage">
+    <img class="background-image" src="/static/img/bgg.png" alt="" aria-hidden="true">
+    <img class="front-ground" src="/static/img/tanah.png" alt="" aria-hidden="true">
+    <img class="leaf leaf-left" src="/static/img/rumput_kiri.png" alt="" aria-hidden="true">
+    <img class="leaf leaf-right" src="/static/img/rumput_kanan.png" alt="" aria-hidden="true">
+    {% block content %}{% endblock %}
+
+    <div id="feedbackModal" class="feedback-modal" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="feedback-modal__overlay"></div>
+      <div class="feedback-modal__dialog" role="alertdialog" aria-labelledby="feedbackModalTitle" aria-describedby="feedbackModalMessage">
+        <h2 id="feedbackModalTitle" class="sr-only">Feedback Jawaban</h2>
+        <p id="feedbackModalMessage" class="feedback-modal__message"></p>
+        <button type="button" class="btn feedback-modal__button" id="feedbackModalButton">Lanjut</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="/static/js/core.js"></script>
+  <script src="/static/js/helpers-drag.js"></script>
+  <script src="/static/js/game.js"></script>
+  <script src="/static/js/brain-split.js"></script>
+  <script src="/static/js/init.js"></script>
+</body>
+</html>

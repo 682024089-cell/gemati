@@ -1,0 +1,206 @@
+.demo-page {
+  width: min(84vw, 620px);
+  margin: 0 auto;
+  min-height: auto;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(6px) saturate(125%);
+  border-radius: 24px;
+  padding: clamp(18px, 2.4vw, 26px) clamp(16px, 3vw, 28px);
+  box-shadow: 0 18px 38px rgba(12, 18, 24, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1.4rem;
+  position: relative;
+  z-index: 10001;
+}
+
+/* Make demo content match permainan layout (centered intro) */
+.demo-page h2 {
+  margin: 0 0 0.75rem;
+  color: #5c2e1e;
+  font-size: clamp(2.6rem, 4vw, 3.6rem);
+  line-height: 1.05;
+  text-align: center;
+}
+
+.demo-page p {
+  margin: 0 auto 1.6rem;
+  max-width: 760px;
+  color: #3d2821;
+  font-size: clamp(1rem, 1.45vw, 1.18rem);
+  line-height: 1.8;
+  text-align: center;
+}
+
+.demo-page .btn {
+  margin-top: 12px;
+  box-shadow: 0 10px 0 rgba(98, 55, 18, 0.18);
+}
+
+/* Align the menu panel to the center for demo page */
+.game-menu-page.demo-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: clamp(14px, 2vw, 28px);
+  padding-bottom: clamp(14px, 2vw, 28px);
+  min-height: 100vh;
+  position: relative;
+  z-index: 0;
+}
+
+.game-menu-page.demo-top .menu-panel {
+  margin-top: 0;
+  width: min(90vw, 720px);
+  min-height: auto;
+  padding: clamp(14px, 2vw, 24px);
+  position: relative;
+  z-index: 10000;
+}
+
+/* Ensure the panel and its content sit above decorative background elements */
+.menu-panel {
+  width: min(92vw, 700px);
+  min-height: 38vh;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(6px) saturate(125%);
+  border-radius: 24px;
+  padding: clamp(12px, 1.7vw, 18px) clamp(10px, 2vw, 16px);
+  box-shadow: 0 18px 36px rgba(12, 18, 24, 0.16);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  position: relative;
+}
+
+.game-menu-page.demo-top .menu-panel {
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 24px 54px rgba(12, 18, 24, 0.18);
+}
+
+.demo-actions {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.4rem;
+}
+
+.demo-actions .btn {
+  margin-left: auto;
+}
+
+/* Ensure demo video is visible and constrained so it doesn't push offscreen */
+.demo-page video {
+  display: block;
+  margin: 1rem auto;
+  max-height: 60vh;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Video wrapper to ensure rounded corners and drop shadow like screenshot */
+.demo-video-wrapper {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(12,18,24,0.18);
+  background: #000;
+}
+
+.demo-video-wrapper video {
+  display: block;
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  vertical-align: middle;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.8rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f4b15f 0%, #d96a10 100%);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 10px 0 rgba(98, 55, 18, 0.24);
+}
+
+.demo-actions .btn {
+  border-radius: 28px;
+  padding: 0.7rem 1.2rem;
+  background: linear-gradient(180deg,#f08f3f 0%, #d96a10 100%);
+}
+
+@media (max-width: 840px) {
+  .component-page {
+    padding: 2rem 1.2rem 2.5rem;
+  }
+
+  .component-page h2 {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+
+  .component-page p {
+    font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+  }
+}
+
+@media (max-width: 720px) {
+  .game-menu-page.direct-view {
+    padding: 1rem 0.75rem 1.5rem;
+  }
+
+  .menu-panel {
+    width: 100%;
+    min-height: auto;
+    padding: 16px;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    box-shadow: 0 18px 36px rgba(12, 18, 24, 0.16);
+  }
+
+  .demo-page {
+    width: 100%;
+    margin: 0 auto;
+    padding: 16px;
+    min-height: auto;
+  }
+
+  .demo-page h2,
+  .demo-page p,
+  .page-tag {
+    text-align: left;
+  }
+
+  .demo-page p {
+    max-width: 100%;
+  }
+
+  .game-menu-page.direct-view .background-image,
+  .game-menu-page.direct-view .front-ground,
+  .game-menu-page.direct-view .leaf,
+  .game-menu-page.direct-view .janur,
+  .game-menu-page.direct-view .temple-image,
+  .game-menu-page.direct-view .tower-image,
+  .game-menu-page.direct-view .people-image,
+  .game-menu-page.direct-view .wayang-image,
+  .game-menu-page.direct-view .bottom-decor {
+    display: none;
+  }
+
+  .math-panel {
+    width: 100%;
+  }
+}

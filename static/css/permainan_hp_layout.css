@@ -1,0 +1,180 @@
+.permainan-page {
+  width: min(100%, 880px) !important;
+  max-width: min(96vw, 880px) !important;
+  margin: 0 auto !important;
+}
+
+.permainan-page .helper-panel {
+  overflow: hidden;
+  padding: 0.85rem !important;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.permainan-page .helper-plate {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 0 !important;
+  margin: 0 auto !important;
+  display: block !important;
+}
+
+.game-menu-page.direct-view.permainan-top .menu-panel {
+  width: min(100%, 960px) !important;
+}
+
+.menu-panel .permainan-page,
+.permainan-page {
+  width: min(100%, 760px) !important;
+  max-width: min(96vw, 760px) !important;
+  margin: 0 auto !important;
+}
+
+/* Laptop / desktop: 10 kolom */
+.permainan-page .helper-pieces.helper-grid.layout-b {
+  display: grid !important;
+  grid-template-columns: repeat(10, minmax(28px, 1fr)) !important;
+  grid-auto-rows: 90px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  gap: 0px !important;
+  margin: 0 auto !important;
+  justify-items: center !important;
+  align-content: start !important;
+}
+
+.permainan-page .helper-pieces.helper-grid.layout-b .helper-piece {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  min-width: 0 !important;
+}
+
+.permainan-page .helper-pieces.helper-grid.layout-b .helper-piece .helper-icon {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 auto !important;
+}
+
+.permainan-page .helper-pieces.helper-grid.layout-b .helper-piece[data-sign="+"] .helper-icon {
+  /* desktop layout */
+  transform: translateX(-5px) !important;
+}
+
+.permainan-page .helper-pieces.helper-grid.layout-b .helper-piece[data-sign="-"] .helper-icon {
+  /* desktop layout */
+  transform: translateX(-1px) !important;
+}
+
+.permainan-page .helper-pieces.helper-grid.layout-b .helper-piece.helper-piece--empty {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 0 !important;
+}
+
+@media (max-width: 720px) {
+  /* HP / layar kecil: 6 kolom */
+  .permainan-page .helper-plate {
+    justify-content: stretch;
+  }
+
+  .permainan-page .helper-pieces.helper-grid.layout-b {
+    grid-template-columns: repeat(6, minmax(0px, 1fr)) !important;
+    grid-auto-rows: 52px !important;
+    gap: 0px !important;
+    width: 100% !important;
+  }
+
+  .permainan-page .helper-pieces.helper-grid.layout-b .helper-piece {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 50px !important;
+    min-height: 50px !important;
+    min-width: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+  }
+
+  .permainan-page .helper-pieces.helper-grid.layout-b .helper-piece[data-sign="+"] .helper-icon {
+    /* mobile layout */
+    transform: translateX(-2px) !important;
+  }
+
+  .permainan-page .helper-pieces.helper-grid.layout-b .helper-piece[data-sign="-"] .helper-icon {
+    /* mobile layout */
+    transform: translateX(0px) !important;
+  }
+
+  .permainan-page .helper-pieces.helper-grid.layout-b .helper-piece--empty,
+  .permainan-page .helper-pieces.helper-grid.layout-b .helper-piece.hp-hidden-empty-slot {
+    border: 2px dashed rgba(138, 92, 50, 0.18) !important;
+    background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(250,240,220,0.2)) !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    cursor: default !important;
+  }
+
+  .permainan-page .helper-pieces.helper-grid.layout-b .helper-piece.hp-hidden-empty-slot .helper-icon {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: none !important;
+  }
+
+  .permainan-page .helper-pieces.helper-grid.layout-b .helper-piece.hp-hidden-empty-slot.drag-over {
+    background: rgba(255, 248, 220, 0.95) !important;
+    border-color: rgba(86, 166, 80, 0.85) !important;
+    opacity: 1 !important;
+  }
+
+  .permainan-page .helper-pieces.helper-grid.layout-b .helper-piece.hp-hidden-empty-slot.drag-over .helper-icon {
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+
+  .permainan-page .action-bins {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.55rem !important;
+  }
+
+  .permainan-page .action-bin {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    min-height: 104px !important;
+    height: auto !important;
+    padding: 0.72rem 0.8rem !important;
+    border-radius: 18px !important;
+    aspect-ratio: 1.5 / 1 !important;
+  }
+
+  .permainan-page .action-label-row {
+    justify-content: space-between !important;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .permainan-page .action-bins {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.45rem !important;
+  }
+
+  .permainan-page .action-bin {
+    min-height: 96px !important;
+    padding: 0.62rem 0.7rem !important;
+    aspect-ratio: 1.35 / 1 !important;
+  }
+}

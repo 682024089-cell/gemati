@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Gemanti - Demo{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="/static/css/demo.css">
+{% endblock %}
+
+{% block content %}
+    <section class="game-menu-page direct-view demo-top" role="main">
+     
+        <div class="demo-page">
+          <h2>Demo</h2>
+          <div class="demo-video-wrapper">
+            <video controls playsinline preload="metadata" poster="/static/img/logo.png">
+              <source src="/video/vidio_bantuan.mp4" type="video/mp4">
+              Browser kamu tidak mendukung pemutar video.
+            </video>
+          </div>
+          <div class="demo-actions">
+            <a class="btn" href="/menu">Kembali</a>
+          </div>
+        </div>
+
+    </section>
+    <script>
+      document.addEventListener('DOMContentLoaded', function(){
+        const v = document.querySelector('video');
+        if (v) {
+          try { v.scrollIntoView({block: 'center', inline: 'center'}); } catch(e) {}
+        }
+      });
+    </script>
+{% endblock %}
+

@@ -1,0 +1,473 @@
+.page-home #profileButton {
+  display: none !important;
+}
+
+.page-home .fullscreen-action {
+  top: auto;
+  right: clamp(12px, 2vw, 28px);
+  bottom: clamp(12px, 2vw, 28px);
+}
+
+.brand {
+  position: absolute;
+  top: 0.6%;
+  left: 50%;
+  width: min(29%, 380px);
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 25;
+}
+
+.brand-logo {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 10px rgba(104, 47, 20, 0.24));
+  /* smoother, slower floating: gentle bob + subtle sway + tiny rotation */
+  animation: logo-float3 8s cubic-bezier(.22,.9,.37,.99) infinite;
+  will-change: transform;
+  transform-origin: 50% 50%;
+}
+
+.menu-wrap {
+  position: absolute;
+  left: 50%;
+  bottom: -10%;
+  z-index: 28;
+  width: min(30%, 360px);
+  aspect-ratio: 540 / 420;
+  transform: translateX(-50%);
+}
+
+.menu-card {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+  transition: transform 0.18s ease;
+}
+
+.menu-card:disabled {
+  cursor: default;
+}
+
+.menu-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+@keyframes logo-float3 {
+  0% { transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+  20% { transform: translate3d(-6px,-8px,0) rotate(-0.6deg) scale(1.005); }
+  40% { transform: translate3d(-10px,-2px,0) rotate(-0.35deg) scale(1.002); }
+  60% { transform: translate3d(-6px,6px,0) rotate(0.35deg) scale(1); }
+  80% { transform: translate3d(6px,4px,0) rotate(0.4deg) scale(1.003); }
+  100% { transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+}
+
+/* accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .brand-logo { animation: none !important; }
+}
+
+/* Keep the start button visible on small screens */
+@media (max-width: 720px) {
+  .menu-wrap {
+    bottom: 4% !important;
+    width: min(72%, 420px);
+  }
+}
+
+@media (max-width: 480px) {
+  .brand {
+    top: 1.2%;
+    width: min(70%, 260px);
+  }
+
+  .brand-logo {
+    filter: drop-shadow(0 10px 8px rgba(104, 47, 20, 0.20));
+  }
+
+  .top-action {
+    top: 1.4%;
+  }
+
+  .icon-button {
+    width: clamp(46px, 10vw, 56px);
+  }
+
+  .menu-wrap {
+    bottom: 8%;
+    width: min(82%, 280px);
+  }
+
+  .leaf {
+    width: 28%;
+  }
+
+  .leaf-left {
+    left: -3%;
+    bottom: 8%;
+  }
+
+  .leaf-right {
+    right: -3%;
+  }
+
+  .front-ground {
+    bottom: -18%;
+    height: 46%;
+  }
+
+  .janur {
+    width: 22%;
+  }
+
+  .janur-left {
+    left: 16%;
+  }
+
+  .janur-right {
+    right: 16%;
+  }
+
+  .temple-image,
+  .tower-image,
+  .people-image,
+  .wayang-image {
+    width: 42%;
+  }
+
+  .temple-image {
+    left: 8%;
+    bottom: 18%;
+  }
+
+  .tower-image {
+    right: 8%;
+    bottom: 18%;
+  }
+
+  .people-image,
+  .wayang-image {
+    bottom: 16%;
+  }
+}
+
+@media (max-width: 360px) {
+  .brand {
+    width: min(82%, 220px);
+  }
+
+  .menu-wrap {
+    width: min(90%, 260px);
+    bottom: 10%;
+  }
+
+  .icon-button {
+    width: clamp(42px, 12vw, 52px);
+  }
+
+  .front-ground {
+    bottom: -16%;
+    height: 52%;
+  }
+
+  .janur {
+    width: 24%;
+  }
+
+  .temple-image,
+  .tower-image,
+  .people-image,
+  .wayang-image {
+    width: 46%;
+  }
+}
+
+@media (max-width: 420px) {
+  .brand {
+    top: 1.6%;
+    width: min(86%, 240px);
+  }
+
+  .menu-wrap {
+    bottom: 6%;
+    width: min(88%, 300px);
+    max-width: 320px;
+  }
+
+  .background-image {
+    object-position: top center;
+  }
+
+  .front-ground {
+    bottom: -12%;
+    height: 50%;
+  }
+
+  .leaf-left {
+    left: 0;
+  }
+
+  .leaf-right {
+    right: 0;
+  }
+
+  .temple-image,
+  .tower-image,
+  .people-image,
+  .wayang-image {
+    width: 44%;
+  }
+
+  .temple-image {
+    left: 6%;
+    bottom: 18%;
+  }
+
+  .tower-image {
+    right: 6%;
+    bottom: 18%;
+  }
+}
+
+.page-nama .brand {
+  top: 2%;
+  width: min(24%, 320px);
+}
+
+.page-nama .brand-logo {
+  max-width: 320px;
+}
+
+.page-nama .menu-wrap,
+.page-nama .wayang-image,
+.page-nama .bottom-decor {
+  display: none;
+}
+
+.page-nama #profileButton {
+  display: none !important;
+}
+
+.page-nama #fullscreenButton {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  width: clamp(48px, 10vw, 60px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.page-nama .nama-screen {
+  position: relative;
+  z-index: 200000 !important;
+}
+
+.nama-screen {
+  display: flex;
+  align-items: center;
+  /* do not vertically center; allow adjustable top offset via --nama-top */
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: var(--nama-top, 40vh) 1rem 2rem;
+}
+
+.nama-card {
+  position: relative;
+  max-width: 720px;
+  width: min(720px, 100%);
+  margin: auto;
+  background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f8d85a 100%);
+  border: 1px solid rgba(248, 202, 83, 0.30);
+  border-radius: 36px;
+  padding: 3rem 2.5rem;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.20);
+  text-align: center;
+  z-index: 200001 !important;
+}
+
+.intro-video-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.96);
+  padding: 0;
+  visibility: visible;
+}
+
+.intro-video-overlay.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.intro-video-panel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+.intro-video-panel video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  display: block;
+  background: black;
+}
+
+.intro-video-prompt {
+  position: absolute;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.75rem 1.25rem;
+  background: rgba(0, 0, 0, 0.72);
+  color: #fff;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: center;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.intro-video-start-button {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.56rem 0.94rem;
+  background: rgba(255, 255, 255, 0.94);
+  color: #111;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.22);
+}
+
+.nama-card p {
+  margin: 0 0 1.5rem;
+  color: #333;
+  font-size: 1rem;
+}
+
+.nama-form {
+  display: grid;
+  gap: 1rem;
+  text-align: left;
+}
+
+.nama-form label {
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.nama-form input {
+  width: 100%;
+  padding: 1rem 1.1rem;
+  border-radius: 18px;
+  border: 1px solid rgba(34, 34, 34, 0.12);
+  background: #fff;
+  font-size: 1rem;
+  color: #111;
+}
+
+.nama-form input:focus {
+  outline: none;
+  border-color: #118ab2;
+  box-shadow: 0 0 0 4px rgba(17, 138, 178, 0.14);
+}
+
+.nama-form button {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 18px;
+  border: none;
+  background: #f8ca53;
+  color: #2b2b2b;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.nama-form button:hover,
+.nama-form button:focus {
+  background: #ddb146;
+}
+
+  .people-image,
+  .wayang-image {
+    bottom: 14%;
+  }
+
+  .bottom-decor.food-image {
+    left: 2%;
+    bottom: 2%;
+    width: 32%;
+  }
+
+  .bottom-decor.music-image {
+    right: 2%;
+    bottom: 2%;
+    width: 30%;
+  }
+
+
+@media (max-width: 360px) {
+  .brand {
+    width: min(88%, 200px);
+  }
+
+  .menu-wrap {
+    width: min(92%, 260px);
+    bottom: 8%;
+  }
+
+  .front-ground {
+    bottom: -14%;
+    height: 52%;
+  }
+
+  .temple-image,
+  .tower-image,
+  .people-image,
+  .wayang-image {
+    width: 48%;
+  }
+
+  .bottom-decor.food-image {
+    width: 30%;
+    bottom: 1%;
+  }
+
+  .bottom-decor.music-image {
+    width: 28%;
+    bottom: 1%;
+  }
+}
