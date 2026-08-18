@@ -92,6 +92,10 @@
         tryPlay();
       };
 
+      const forceFallback = () => {
+        showMenu();
+      };
+
       if (startButton) {
         startButton.addEventListener('click', function (event) {
           event.preventDefault();
@@ -111,14 +115,18 @@
       }, { once: true });
 
       video.addEventListener('error', function () {
-        showMenu();
+        forceFallback();
+      }, { once: true });
+
+      video.addEventListener('stalled', function () {
+        forceFallback();
       }, { once: true });
 
       setTimeout(() => {
         if (video.readyState < 2) {
-          showMenu();
+          forceFallback();
         }
-      }, 2500);
+      }, 1800);
     })();
   </script>
 
