@@ -1,32 +1,53 @@
 {% extends 'base.html' %}
 
-{% block title %}Gemanti - Profil{% endblock %}
+{% block title %}Gemanti - Demo{% endblock %}
 
 {% block styles %}
 <link rel="stylesheet" href="/static/css/demo.css">
 {% endblock %}
 
 {% block content %}
-  <section class="profil-page direct-view" aria-label="Profil">
-    <div class="profil-panel">
-      <div class="profil-profil-page">
-        <h1>Gemati</h1>
+  <section class="demo-page direct-view" aria-label="Demo">
+    <div class="demo-panel">
+      <div class="demo-content">
+        <h1>Demo</h1>
 
-       <div class="profil-image-placeholder profil-image-placeholder--centered">
-            <div class="profil-image-container">
-              <img src="/static/img/aduh.png" alt="Gambar tengah" />
-            </div>
-          </div>
-
-        <div class="profil-description-actions actions-split">
-          <a class="page-arrow" href="/profil/selanjutnya" aria-label="Lanjut ke halaman selanjutnya">
-            <span>Kembali</span>
-            <img src="/static/img/kanan.png" alt="Panah kanan" />
-          </a>
+        <div class="demo-video-wrapper">
+          <video controls playsinline preload="metadata" poster="/static/img/logo.png">
+            <source src="/video/vidio_bantuan.mp4" type="video/mp4">
+            Browser kamu tidak mendukung pemutar video.
+          </video>
         </div>
       </div>
 
+      <button class="demo-control demo-control--back" type="button" id="backButton" aria-label="Kembali">
+        <span>Kembali</span>
+      </button>
       <style>
+  .demo-panel {
+    background: #ffffff;
+  }
+
+  .demo-control--back {
+    position: absolute;
+    left: 50%;
+    bottom: 1rem;
+    transform: translateX(-50%);
+    min-width: 130px;
+    height: 52px;
+    padding: 0 1rem;
+    border-radius: 999px;
+    border: 1px solid rgba(149, 105, 58, 0.2);
+    background: #fff;
+    color: #4b2d10;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+
   .profil-panel {
     position: relative;
   }
@@ -104,7 +125,7 @@
 >
   <img src="/static/img/fs.png" alt="Layar penuh">
 </button>
-      </div>
+
     </div>
   </section>
 {% endblock %}
