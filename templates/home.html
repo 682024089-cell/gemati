@@ -37,18 +37,19 @@
 
       if (!overlay || !video) return;
 
+      // Ensure video source is set
       const sourceTag = video.querySelector('source');
       if (sourceTag) {
         sourceTag.src = videoSource;
       }
       video.src = videoSource;
-      video.load();
 
       const showMenu = () => {
         if (menuWrap) {
           menuWrap.style.visibility = 'visible';
           menuWrap.style.opacity = '1';
           menuWrap.style.pointerEvents = 'auto';
+          menuWrap.style.transition = 'opacity 0.3s ease';
         }
         if (fallbackImage) {
           fallbackImage.style.display = 'none';
@@ -68,6 +69,7 @@
         if (startButton) {
           startButton.style.display = 'inline-block';
           startButton.disabled = false;
+          startButton.textContent = 'Lanjut';
         }
       };
 
@@ -79,50 +81,63 @@
         }
       };
 
+      // Initialize state
       hideMenu();
       overlay.style.display = 'flex';
       overlay.style.visibility = 'visible';
       overlay.setAttribute('aria-hidden', 'false');
+      if (startButton) {
+        startButton.style.display = 'inline-block';
+        startButton.disabled = false;
+      }
 
-      const startIntroVideo = () => {
-        if (!startButton) return;
+      const startIntroVideo = async () => {
+        if (!startButton || startButton.disabled) return;
 
         startButton.disabled = true;
         startButton.style.display = 'none';
 
+        // Reset video to start
         try {
-          if (sourceTag) {
-            sourceTag.src = videoSource;
-          }
-          video.src = videoSource;
+          video.currentTime = 0;
           video.load();
         } catch (error) {
-          // Silent fallback if the browser rejects loading the media source.
+          console.warn('Error loading video:', error);
         }
 
-        const tryPlay = () => {
+        // Attempt to play
+        try {
           video.muted = true;
-          video.volume = 1;
-
-          video.play().then(() => {
-            video.muted = false;
-            video.volume = 1;
-          }).catch(() => {
-            if (fallbackImage) {
-              fallbackImage.style.display = 'block';
-            }
-            if (video) {
-              video.style.display = 'none';
-            }
-            startButton.textContent = 'Lanjut';
-            startButton.disabled = false;
-            startButton.style.display = 'inline-block';
-          });
-        };
-
-        tryPlay();
+          await video.play();
+          video.muted = false;
+        } catch (playError) {
+          console.warn('Play error, showing fallback:', playError);
+          showFallback();
+        }
       };
 
+      // Video event handlers - NOT using { once: true } so they persist
+      const handleVideoEnded = () => {
+        console.log('Video ended');
+        showMenu();
+      };
+
+      const handleVideoError = (event) => {
+        console.warn('Video error:', event);
+        showFallback();
+      };
+
+      const handleVideoStalled = () => {
+        console.warn('Video stalled, showing fallback');
+        showFallback();
+      };
+
+      // Attach event listeners
+      video.addEventListener('ended', handleVideoEnded);
+      video.addEventListener('error', handleVideoError);
+      video.addEventListener('stalled', handleVideoStalled);
+
+      // Button click handler
       if (startButton) {
         startButton.addEventListener('click', function (event) {
           event.preventDefault();
@@ -131,26 +146,17 @@
         });
       }
 
+      // Overlay click handler - also triggers video
       overlay.addEventListener('click', function (event) {
         if (event.target === overlay || event.target === video) {
           startIntroVideo();
         }
       });
 
-      video.addEventListener('ended', function () {
-        showMenu();
-      }, { once: true });
-
-      video.addEventListener('error', function () {
-        showFallback();
-      }, { once: true });
-
-      video.addEventListener('stalled', function () {
-        showFallback();
-      }, { once: true });
-
+      // Fallback timeout if video takes too long to load
       setTimeout(() => {
-        if (video.readyState < 2) {
+        if (video.readyState < 2 && video.paused) {
+          console.warn('Video not ready after 1.8s, showing fallback');
           showFallback();
         }
       }, 1800);
