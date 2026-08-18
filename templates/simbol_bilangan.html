@@ -270,18 +270,24 @@
           }
           if (given === expected) {
             const correctMessage = `Jawaban benar, ${playerName}.`;
+            if (window.gemanti && typeof window.gemanti.playFeedbackSound === 'function') {
+              window.gemanti.playFeedbackSound('correct');
+            }
             if (typeof showFeedback === 'function') showFeedback(correctMessage, 'success', 'Lanjut');
             else alert(correctMessage);
             // advance to next question
             currentQuestion = currentQuestion + 1;
             if (currentQuestion > TOTAL_TYPES) {
               // finished all questions
-                const completedMessage = `Wow Keren 👍👍👍\n${playerName} sudah memahami simbol bilangan bulat.`;
+              const completedMessage = `Wow Keren 👍👍👍\n${playerName} sudah memahami simbol bilangan bulat.`;
               if (typeof createConfettiBurst === 'function') createConfettiBurst();
               try {
                 safeLocalStorageSet('gemanti-completed-simbol', '1');
               } catch (e) {
                 try { localStorage.setItem('gemanti-completed-simbol', '1'); } catch (e) {}
+              }
+              if (window.gemanti && typeof window.gemanti.playFeedbackSound === 'function') {
+                window.gemanti.playFeedbackSound('complete');
               }
               if (typeof showFeedback === 'function') {
                 showFeedback(completedMessage, 'success', 'Lanjut PENJUMLAHAN!');
@@ -296,6 +302,9 @@
             renderSymbolQuestion(currentQuestion);
           } else {
             const wrongMessage = `Jawaban belum benar, ${playerName}.`;
+            if (window.gemanti && typeof window.gemanti.playFeedbackSound === 'function') {
+              window.gemanti.playFeedbackSound('wrong');
+            }
             if (typeof showFeedback === 'function') showFeedback(wrongMessage, 'error', 'Coba lagi');
             else alert(wrongMessage);
             // keep same question, clear input for retry
