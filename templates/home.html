@@ -61,13 +61,35 @@
 
       const startIntroVideo = () => {
         if (!startButton) return;
+
+        startButton.disabled = true;
         startButton.style.display = 'none';
-        video.muted = false;
-        video.volume = 1;
-        video.play().catch(() => {
-          startButton.textContent = 'Klik untuk putar';
-          startButton.style.display = 'inline-block';
-        });
+
+        try {
+          video.load();
+        } catch (error) {
+          // ignore load issues and continue with play attempt
+        }
+
+        const tryPlay = () => {
+          video.muted = true;
+          video.volume = 1;
+
+          video.play().then(() => {
+            video.muted = false;
+            video.volume = 1;
+          }).catch(() => {
+            video.muted = false;
+            video.volume = 1;
+            video.play().catch(() => {
+              startButton.textContent = 'Klik untuk putar';
+              startButton.disabled = false;
+              startButton.style.display = 'inline-block';
+            });
+          });
+        };
+
+        tryPlay();
       };
 
       if (startButton) {
@@ -87,6 +109,16 @@
       video.addEventListener('ended', function () {
         showMenu();
       }, { once: true });
+
+      video.addEventListener('error', function () {
+        showMenu();
+      }, { once: true });
+
+      setTimeout(() => {
+        if (video.readyState < 2) {
+          showMenu();
+        }
+      }, 2500);
     })();
   </script>
 
