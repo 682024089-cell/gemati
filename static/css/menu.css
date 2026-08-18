@@ -9,8 +9,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem 1.5rem 3rem;
-  z-index: 200000 !important;
+  padding: calc(4.5rem + env(safe-area-inset-top, 0px)) 1.5rem 3rem;
+  z-index: 1 !important;
 }
 
 .bottom-right {
@@ -42,7 +42,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 200001 !important;
+  z-index: 2 !important;
   border: 1px solid rgba(255, 255, 255, 0.75);
   position: relative;
 }
@@ -89,6 +89,10 @@
 }
 
 @media (max-width: 880px) {
+  .game-menu-page.direct-view {
+    padding-top: calc(4.7rem + env(safe-area-inset-top, 0px));
+  }
+
   .game-menu-items {
     grid-template-columns: repeat(1, 1fr);
     gap: 18px;
@@ -97,6 +101,7 @@
   .menu-panel {
     min-height: auto;
     padding: 20px;
+    z-index: 2 !important;
   }
 
   .game-menu-item img {
