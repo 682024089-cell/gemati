@@ -313,7 +313,7 @@
   position: relative;
   max-width: 720px;
   width: min(720px, calc(100% - 2rem));
-  margin: 2.8rem auto 0;
+  margin: 2.1rem auto 0;
   background: linear-gradient(180deg, rgba(244, 214, 102, 0.98) 0%, rgba(241, 200, 82, 0.98) 100%);
   border: 1px solid rgba(248, 202, 83, 0.35);
   border-radius: 36px;
