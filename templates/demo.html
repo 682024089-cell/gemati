@@ -20,9 +20,9 @@
         </div>
       </div>
 
-      <button class="demo-control demo-control--back" type="button" id="backButton" aria-label="Kembali">
+      <a class="demo-control demo-control--back" href="/menu" id="backButton" aria-label="Kembali ke menu">
         <span>Kembali</span>
-      </button>
+      </a>
       <style>
   .demo-panel {
     background: #ffffff;
@@ -34,6 +34,7 @@
     bottom: 1rem;
     transform: translateX(-50%);
     min-width: 130px;
+    width: 130px;
     height: 52px;
     padding: 0 1rem;
     border-radius: 999px;
@@ -46,6 +47,10 @@
     align-items: center;
     justify-content: center;
     z-index: 2;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .profil-panel {
