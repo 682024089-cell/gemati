@@ -16,15 +16,8 @@
         <source src="/static/video/vidio_logo.mp4" type="video/mp4">
       </video>
       <img id="introFallbackImage" src="/static/img/logo.png" alt="Gemati" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: none; background: #fff;">
-      <button id="introVideoStartButton" type="button" style="position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); padding: 0.8rem 1.5rem; border: none; border-radius: 999px; background: #ffffff; color: #2f1d0b; font-weight: 700; cursor: pointer; box-shadow: 0 8px 18px rgba(0,0,0,0.25);">Lanjut
-      </button>
+      <button id="introVideoStartButton" type="button" style="position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); padding: 0.8rem 1.5rem; border: none; border-radius: 999px; background: #ffffff; color: #2f1d0b; font-weight: 700; cursor: pointer; box-shadow: 0 8px 18px rgba(0,0,0,0.25);">Lanjut</button>
     </div>
-  </div>
-
-  <div class="menu-wrap" style="position: fixed; left: 50%; bottom: 8vh; transform: translateX(-50%); z-index: 999999; visibility: hidden; opacity: 0; pointer-events: none; transition: opacity 0.2s ease;">
-    <a class="menu-card" id="menuButton" href="/menu" aria-label="Mulai permainan">
-      <img class="menu-image" src="/static/img/mulai.png" alt="Mulai">
-    </a>
   </div>
 
   <div class="menu-wrap" style="position: fixed; left: 50%; bottom: 8vh; transform: translateX(-50%); z-index: 999999; visibility: hidden; opacity: 0; pointer-events: none; transition: opacity 0.2s ease;">
@@ -40,8 +33,16 @@
       const startButton = document.getElementById('introVideoStartButton');
       const menuWrap = document.querySelector('.menu-wrap');
       const fallbackImage = document.getElementById('introFallbackImage');
+      const videoSource = '/static/video/vidio_logo.mp4';
 
       if (!overlay || !video) return;
+
+      const sourceTag = video.querySelector('source');
+      if (sourceTag) {
+        sourceTag.src = videoSource;
+      }
+      video.src = videoSource;
+      video.load();
 
       const showMenu = () => {
         if (menuWrap) {
@@ -66,6 +67,7 @@
         }
         if (startButton) {
           startButton.style.display = 'inline-block';
+          startButton.disabled = false;
         }
       };
 
@@ -89,9 +91,13 @@
         startButton.style.display = 'none';
 
         try {
+          if (sourceTag) {
+            sourceTag.src = videoSource;
+          }
+          video.src = videoSource;
           video.load();
         } catch (error) {
-          // ignore load issues and continue with play attempt
+          // Silent fallback if the browser rejects loading the media source.
         }
 
         const tryPlay = () => {
@@ -117,10 +123,6 @@
         tryPlay();
       };
 
-      const forceFallback = () => {
-        showFallback();
-      };
-
       if (startButton) {
         startButton.addEventListener('click', function (event) {
           event.preventDefault();
@@ -140,16 +142,16 @@
       }, { once: true });
 
       video.addEventListener('error', function () {
-        forceFallback();
+        showFallback();
       }, { once: true });
 
       video.addEventListener('stalled', function () {
-        forceFallback();
+        showFallback();
       }, { once: true });
 
       setTimeout(() => {
         if (video.readyState < 2) {
-          forceFallback();
+          showFallback();
         }
       }, 1800);
     })();

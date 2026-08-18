@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, send_from_directory
 import os
 from flask import url_for
 
@@ -39,6 +39,11 @@ def favicon():
 @app.route("/favicon.ico")
 def favicon_ico():
     return app.send_static_file("img/logo.png")
+
+
+@app.route("/video/<path:filename>")
+def serve_video(filename):
+    return send_from_directory(os.path.join(BASE_DIR, "static", "video"), filename)
 
 
 @app.route("/")
