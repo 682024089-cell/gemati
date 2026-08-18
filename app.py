@@ -43,7 +43,24 @@ def favicon_ico():
 
 @app.route("/video/<path:filename>")
 def serve_video(filename):
-    return send_from_directory(os.path.join(BASE_DIR, "static", "video"), filename)
+    video_dir = os.path.join(BASE_DIR, "static", "video")
+    filepath = os.path.join(video_dir, filename)
+    
+    # Try exact match first
+    if os.path.isfile(filepath):
+        return send_from_directory(video_dir, filename)
+    
+    # Try case-insensitive match for cross-platform compatibility
+    filename_lower = filename.lower()
+    try:
+        for file in os.listdir(video_dir):
+            if file.lower() == filename_lower:
+                return send_from_directory(video_dir, file)
+    except OSError:
+        pass
+    
+    # Not found, return original (will trigger 404 if truly missing)
+    return send_from_directory(video_dir, filename)
 
 
 @app.route("/")
