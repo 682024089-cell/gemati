@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect
 import os
-from flask import request, Response, send_file, abort, url_for
+from flask import url_for
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 GAME_FOLDER = os.path.join(BASE_DIR, "game 1")
@@ -91,45 +91,6 @@ def final():
 @app.route('/status')
 def status():
     return {"status": "ok", "message": "server running"}
-
-
-def partial_response(path):
-    full_path = os.path.join(STATIC_FOLDER, 'video', path)
-    if not os.path.exists(full_path):
-        abort(404)
-    file_size = os.path.getsize(full_path)
-    range_header = request.headers.get('Range', None)
-    if not range_header:
-        return send_file(full_path, mimetype='video/mp4')
-
-    # parse range header
-    units, _, range_spec = range_header.partition('=')
-    if units != 'bytes':
-        return send_file(full_path, mimetype='video/mp4')
-    start_str, _, end_str = range_spec.partition('-')
-    try:
-        start = int(start_str) if start_str else 0
-        end = int(end_str) if end_str else file_size - 1
-    except ValueError:
-        start = 0
-        end = file_size - 1
-    if end >= file_size:
-        end = file_size - 1
-    length = end - start + 1
-    with open(full_path, 'rb') as f:
-        f.seek(start)
-        data = f.read(length)
-
-    rv = Response(data, 206, mimetype='video/mp4', direct_passthrough=True)
-    rv.headers['Content-Range'] = f'bytes {start}-{end}/{file_size}'
-    rv.headers['Accept-Ranges'] = 'bytes'
-    rv.headers['Content-Length'] = str(length)
-    return rv
-
-
-@app.route('/video/<path:filename>')
-def video(filename):
-    return partial_response(filename)
 
 
 if __name__ == "__main__":
