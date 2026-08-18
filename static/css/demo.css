@@ -1,206 +1,324 @@
-.demo-page {
-  width: min(84vw, 620px);
-  margin: 0 auto;
-  min-height: auto;
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(6px) saturate(125%);
-  border-radius: 24px;
-  padding: clamp(18px, 2.4vw, 26px) clamp(16px, 3vw, 28px);
-  box-shadow: 0 18px 38px rgba(12, 18, 24, 0.16);
-  border: 1px solid rgba(255, 255, 255, 0.85);
+.profil-page.direct-view {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 1rem;
+  z-index: 200000 !important;
+}
+
+.profil-panel {
+  position: relative;
+  width: min(92vw, 900px);
+  background: linear-gradient(135deg, #fff7ea 0%, #fce9cc 100%);
+  border: 2px solid #b3661f;
+  border-radius: 32px;
+  box-shadow: 0 28px 64px rgba(0,0,0,0.18);
+  padding: 1.5rem;
+  z-index: 200001 !important; /* ensure panel sits above all decorative elements */
+}
+
+.profil-panel.no-border {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+
+.profil-profil-page,
+.profil-description-page {
+  width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-items: stretch;
-  gap: 1.4rem;
-  position: relative;
-  z-index: 10001;
+  gap: 1rem;
 }
 
-/* Make demo content match permainan layout (centered intro) */
-.demo-page h2 {
-  margin: 0 0 0.75rem;
-  color: #5c2e1e;
-  font-size: clamp(2.6rem, 4vw, 3.6rem);
-  line-height: 1.05;
+.profil-profil-page h1,
+.profil-description-page h1 {
+  font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+  color: #5e2b0c;
+  margin: 0;
   text-align: center;
 }
 
-.demo-page p {
-  margin: 0 auto 1.6rem;
-  max-width: 760px;
-  color: #3d2821;
-  font-size: clamp(1rem, 1.45vw, 1.18rem);
-  line-height: 1.8;
+.profil-profil-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.profil-card {
+  background: #fff8ed;
+  border: 2px solid #d9a15b;
+  border-radius: 20px;
+  padding: 1rem;
+  min-width: 180px;
+}
+
+.profil-card-red {
+  background: #fff0e8;
+}
+
+.profil-card-green {
+  background: #eef8e8;
+}
+
+.profil-avatar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.8rem;
+}
+
+.profil-avatar img {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.profil-card-body {
   text-align: center;
 }
 
-.demo-page .btn {
-  margin-top: 12px;
-  box-shadow: 0 10px 0 rgba(98, 55, 18, 0.18);
+.profil-role {
+  font-weight: 700;
+  color: #a65b0b;
+  margin-bottom: 0.2rem;
 }
 
-/* Align the menu panel to the center for demo page */
-.game-menu-page.demo-top {
+.profil-name {
+  font-weight: 700;
+  color: #2f2b24;
+  margin-bottom: 0.2rem;
+}
+
+.profil-id {
+  color: #6b5f4d;
+  font-size: 0.95rem;
+}
+
+.profil-advisor {
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding-top: clamp(14px, 2vw, 28px);
-  padding-bottom: clamp(14px, 2vw, 28px);
-  min-height: 100vh;
-  position: relative;
-  z-index: 0;
-}
-
-.game-menu-page.demo-top .menu-panel {
-  margin-top: 0;
-  width: min(90vw, 720px);
-  min-height: auto;
-  padding: clamp(14px, 2vw, 24px);
-  position: relative;
-  z-index: 10000;
-}
-
-/* Ensure the panel and its content sit above decorative background elements */
-.menu-panel {
-  width: min(92vw, 700px);
-  min-height: 38vh;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(6px) saturate(125%);
-  border-radius: 24px;
-  padding: clamp(12px, 1.7vw, 18px) clamp(10px, 2vw, 16px);
-  box-shadow: 0 18px 36px rgba(12, 18, 24, 0.16);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  border: 1px solid rgba(255, 255, 255, 0.75);
-  position: relative;
-}
-
-.game-menu-page.demo-top .menu-panel {
-  background: rgba(255, 255, 255, 0.98);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 24px 54px rgba(12, 18, 24, 0.18);
-}
-
-.demo-actions {
+  gap: 1rem;
   width: 100%;
+  max-width: 620px;
+}
+
+.profil-advisor-top .advisor-avatar {
+  border-color: rgba(241, 232, 221, 0.95);
+}
+
+.profil-advisor-bottom .advisor-avatar {
+  border-color: rgba(255,255,255,0.9);
+  box-shadow: 0 6px 10px rgba(12,18,24,0.06);
+}
+
+.profil-advisor-top { margin-top: 0.6rem; }
+.profil-advisor-bottom { margin-top: 1.4rem; }
+
+.advisor-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: #f7d898;
+  border: 3px solid #fff;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.advisor-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.advisor-bubble {
+  background: #f4ecde;
+  border-radius: 18px;
+  padding: 0.8rem 1rem;
+  flex: 1;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+}
+
+.advisor-bubble-top {
+  background: #f7ebd8;
+}
+
+.advisor-bubble-bottom {
+  background: #ebf4e0;
+}
+
+.advisor-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #8d4f12;
+  margin: 0 0 0.2rem;
+}
+
+.advisor-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #3c2a16;
+  margin: 0;
+}
+
+.profil-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.6rem;
+  gap: 1rem;
+}
+
+.profil-campus {
+  font-size: 0.95rem;
+  color: #7f4823;
+  font-weight: 600;
+}
+
+.profil-description-content {
+  width: min(92vw, 760px);
+  padding: 1.25rem;
+  background: rgba(255,255,255,0.9);
+  border-radius: 24px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+  line-height: 1.7;
+  color: #4b2d10;
+}
+
+.profil-description-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.profil-description-actions.actions-split {
   display: flex;
   justify-content: flex-end;
-  margin-top: 1.4rem;
+  align-items: center;
 }
 
-.demo-actions .btn {
-  margin-left: auto;
+.profil-description-actions.actions-split .page-arrow,
+.profil-description-actions.actions-split .btn {
+  margin: 0;
 }
 
-/* Ensure demo video is visible and constrained so it doesn't push offscreen */
-.demo-page video {
-  display: block;
-  margin: 1rem auto;
-  max-height: 60vh;
-  width: 100%;
-  object-fit: cover;
-}
-
-/* Video wrapper to ensure rounded corners and drop shadow like screenshot */
-.demo-video-wrapper {
-  width: 100%;
-  max-width: 680px;
-  margin: 0 auto;
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 0 12px 30px rgba(12,18,24,0.18);
-  background: #ffffff;
-}
-
-.demo-video-wrapper video {
-  display: block;
-  width: 100%;
-  max-height: 420px;
-  object-fit: cover;
-  vertical-align: middle;
-}
-
-.btn {
+.page-arrow {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem 1.8rem;
+  min-width: 58px;
+  height: 58px;
+  padding: 0 14px;
   border-radius: 999px;
-  background: linear-gradient(180deg, #f4b15f 0%, #d96a10 100%);
-  color: #fff;
+  background: #ffffff;
+  border: 1px solid rgba(149, 105, 58, 0.2);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.08);
+  color: #4b2d10;
   font-weight: 700;
   text-decoration: none;
-  box-shadow: 0 10px 0 rgba(98, 55, 18, 0.24);
+  gap: 0.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.demo-actions .btn {
-  border-radius: 28px;
-  padding: 0.7rem 1.2rem;
-  background: linear-gradient(180deg,#f08f3f 0%, #d96a10 100%);
+.page-arrow:hover {
+  transform: translateX(3px);
+  box-shadow: 0 14px 22px rgba(0, 0, 0, 0.12);
 }
 
-@media (max-width: 840px) {
-  .component-page {
-    padding: 2rem 1.2rem 2.5rem;
-  }
-
-  .component-page h2 {
-    font-size: clamp(2rem, 6vw, 3rem);
-  }
-
-  .component-page p {
-    font-size: clamp(0.95rem, 2.5vw, 1.2rem);
-  }
+.page-arrow img {
+  width: 22px;
+  height: auto;
 }
 
-@media (max-width: 720px) {
-  .game-menu-page.direct-view {
-    padding: 1rem 0.75rem 1.5rem;
+.profil-image-placeholder {
+  width: 100%;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 1.25rem;
+  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(149, 105, 58, 0.12);
+}
+
+.profil-image-placeholder p,
+.profil-image-placeholder ul {
+  margin: 0 0 1rem 0;
+}
+
+.profil-image-placeholder ul {
+  padding-left: 1.25rem;
+}
+
+.profil-image-placeholder img {
+  width: min(100%, 560px);
+  max-height: 320px;
+  object-fit: contain;
+  border-radius: 16px;
+}
+
+.profil-image-placeholder.profil-image-placeholder--centered {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.profil-image-placeholder.profil-image-placeholder--centered .profil-image-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profil-image-placeholder.profil-image-placeholder--centered img {
+  max-width: min(100%, 520px);
+  max-height: 360px;
+}
+
+.profil-note-list {
+  padding-left: 1.1rem;
+}
+
+.profil-note-list li {
+  margin-bottom: 0.7rem;
+}
+
+@media (max-width: 768px) {
+  .profil-panel {
+    padding: 1rem;
   }
 
-  .menu-panel {
+  .profil-advisor {
+    flex-direction: column;
+    gap: 0.8rem;
     width: 100%;
-    min-height: auto;
-    padding: 16px;
-    margin: 0;
-    background: rgba(255, 255, 255, 0.92);
-    border: 1px solid rgba(255, 255, 255, 0.75);
-    box-shadow: 0 18px 36px rgba(12, 18, 24, 0.16);
+    padding: 0.6rem;
   }
 
-  .demo-page {
-    width: 100%;
-    margin: 0 auto;
-    padding: 16px;
-    min-height: auto;
+  .profil-footer {
+    flex-direction: column;
+    align-items: center;
   }
 
-  .demo-page h2,
-  .demo-page p,
-  .page-tag {
-    text-align: left;
-  }
-
-  .demo-page p {
-    max-width: 100%;
-  }
-
-  .game-menu-page.direct-view .background-image,
-  .game-menu-page.direct-view .front-ground,
-  .game-menu-page.direct-view .leaf,
-  .game-menu-page.direct-view .janur,
-  .game-menu-page.direct-view .temple-image,
-  .game-menu-page.direct-view .tower-image,
-  .game-menu-page.direct-view .people-image,
-  .game-menu-page.direct-view .wayang-image,
-  .game-menu-page.direct-view .bottom-decor {
-    display: none;
-  }
-
-  .math-panel {
-    width: 100%;
+  .profil-description-content {
+    padding: 1rem;
   }
 }

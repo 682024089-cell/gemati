@@ -1,57 +1,36 @@
 {% extends 'base.html' %}
 
-{% block title %}Gemanti - Demo{% endblock %}
+{% block title %}Gemanti - Profil{% endblock %}
 
 {% block styles %}
 <link rel="stylesheet" href="/static/css/demo.css">
 {% endblock %}
 
 {% block content %}
-    <section class="game-menu-page direct-view demo-top" role="main">
-     
-        <div class="demo-page">
-          <h2>Demo</h2>
-          <div class="demo-video-wrapper">
-            <video controls playsinline preload="metadata" poster="/static/img/logo.png">
-              <source src="/static/video/vidio_bantuan.mp4" type="video/mp4">
-              Browser kamu tidak mendukung pemutar video.
-            </video>
+  <section class="profil-page direct-view" aria-label="Profil">
+    <div class="profil-panel">
+      <div class="profil-profil-page">
+        <h1>Gemati</h1>
+
+       <div class="profil-image-placeholder profil-image-placeholder--centered">
+            <div class="profil-image-container">
+              <img src="/static/img/aduh.png" alt="Gambar tengah" />
+            </div>
           </div>
-          
-          <div class="demo-actions">
-            <a class="btn" href="/menu">Kembali</a>
-          </div>
+
+        <div class="profil-description-actions actions-split">
+          <a class="page-arrow" href="/profil/selanjutnya" aria-label="Lanjut ke halaman selanjutnya">
+            <span>Kembali</span>
+            <img src="/static/img/kanan.png" alt="Panah kanan" />
+          </a>
         </div>
-<style>
-  .bottom-right {
-    position: fixed;
-    right: 0.5rem;
-    bottom: 0.5rem;
-    width: clamp(48px, 10vw, 60px);
-    aspect-ratio: 1;
-    border: none;
-    background: transparent;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 1000;
+      </div>
+
+      <style>
+  .profil-panel {
+    position: relative;
   }
 
-  .bottom-right img {
-    width: 30%;
-    height: 30%;
-    object-fit: contain;
-  }
-</style>
-
-<!-- Tombol Fullscreen (Kanan Bawah) -->
-<button id="fullscreenButton" class="bottom-right" type="button" aria-label="Buka layar penuh">
-  <img src="/static/img/fs.png" alt="Layar penuh">
-</button>
-
-<style>
   .icon-button {
     position: absolute;
     top: 0.5rem;
@@ -64,6 +43,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    z-index: 2;
   }
 
   .top-left {
@@ -79,6 +59,30 @@
     height: 70%;
     object-fit: contain;
   }
+
+  #fullscreenButton,
+  .bottom-right {
+    position: absolute;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    width: clamp(48px, 10vw, 60px);
+    aspect-ratio: 1;
+    border: none;
+    background: transparent;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  #fullscreenButton img,
+  .bottom-right img {
+    width: 30%;
+    height: 30%;
+    object-fit: contain;
+  }
 </style>
 
 <!-- Speaker (Kiri Atas) -->
@@ -90,15 +94,17 @@
 <button class="icon-button top-right" id="profileButton" type="button" aria-label="Profil">
   <img src="/static/img/home.png" alt="">
 </button>
-    </div>
-    </section>
-    <script>
-      document.addEventListener('DOMContentLoaded', function(){
-        const v = document.querySelector('video');
-        if (v) {
-          try { v.scrollIntoView({block: 'center', inline: 'center'}); } catch(e) {}
-        }
-      });
-    </script>
-{% endblock %}
 
+<!-- Tombol Fullscreen (Kanan Bawah dalam panel) -->
+<button
+  id="fullscreenButton"
+  type="button"
+  aria-label="Buka layar penuh"
+  class="bottom-right"
+>
+  <img src="/static/img/fs.png" alt="Layar penuh">
+</button>
+      </div>
+    </div>
+  </section>
+{% endblock %}
