@@ -15,6 +15,7 @@
       <video id="introVideo" playsinline preload="auto" style="width: 100%; height: 100%; object-fit: cover; display: block; background: #fff;" poster="/static/img/logo.png">
         <source src="/static/video/vidio_logo.mp4" type="video/mp4">
       </video>
+      <img id="introFallbackImage" src="/static/img/logo.png" alt="Gemati" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: none; background: #fff;">
       <button id="introVideoStartButton" type="button" style="position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); padding: 0.8rem 1.5rem; border: none; border-radius: 999px; background: #ffffff; color: #2f1d0b; font-weight: 700; cursor: pointer; box-shadow: 0 8px 18px rgba(0,0,0,0.25);">Lanjut
       </button>
     </div>
@@ -32,6 +33,7 @@
       const video = document.getElementById('introVideo');
       const startButton = document.getElementById('introVideoStartButton');
       const menuWrap = document.querySelector('.menu-wrap');
+      const fallbackImage = document.getElementById('introFallbackImage');
 
       if (!overlay || !video) return;
 
@@ -41,9 +43,24 @@
           menuWrap.style.opacity = '1';
           menuWrap.style.pointerEvents = 'auto';
         }
+        if (fallbackImage) {
+          fallbackImage.style.display = 'none';
+        }
         overlay.style.display = 'none';
         overlay.style.visibility = 'hidden';
         overlay.setAttribute('aria-hidden', 'true');
+      };
+
+      const showFallback = () => {
+        if (fallbackImage) {
+          fallbackImage.style.display = 'block';
+        }
+        if (video) {
+          video.style.display = 'none';
+        }
+        if (startButton) {
+          startButton.style.display = 'inline-block';
+        }
       };
 
       const hideMenu = () => {
@@ -79,13 +96,15 @@
             video.muted = false;
             video.volume = 1;
           }).catch(() => {
-            video.muted = false;
-            video.volume = 1;
-            video.play().catch(() => {
-              startButton.textContent = 'Klik untuk putar';
-              startButton.disabled = false;
-              startButton.style.display = 'inline-block';
-            });
+            if (fallbackImage) {
+              fallbackImage.style.display = 'block';
+            }
+            if (video) {
+              video.style.display = 'none';
+            }
+            startButton.textContent = 'Lanjut';
+            startButton.disabled = false;
+            startButton.style.display = 'inline-block';
           });
         };
 
@@ -93,7 +112,7 @@
       };
 
       const forceFallback = () => {
-        showMenu();
+        showFallback();
       };
 
       if (startButton) {
