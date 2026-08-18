@@ -87,6 +87,10 @@
               <button class="key key--back" data-key="back">⌫</button>
             </div>
 <style>
+  .menu-panel {
+    position: relative;
+  }
+
   .icon-button {
     position: absolute;
     top: 0.5rem;
@@ -99,6 +103,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    z-index: 2;
   }
 
   .top-left {
@@ -114,6 +119,30 @@
     height: 70%;
     object-fit: contain;
   }
+
+  #fullscreenButton,
+  .bottom-right {
+    position: absolute;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    width: clamp(48px, 10vw, 60px);
+    aspect-ratio: 1;
+    border: none;
+    background: transparent;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  #fullscreenButton img,
+  .bottom-right img {
+    width: 30%;
+    height: 30%;
+    object-fit: contain;
+  }
 </style>
 
 <!-- Speaker (Kiri Atas) -->
@@ -125,31 +154,8 @@
 <button class="icon-button top-right" id="profileButton" type="button" aria-label="Profil">
   <img src="/static/img/home.png" alt="">
 </button>
-<style>
-  .bottom-right {
-    position: fixed;
-    right: 0.5rem;
-    bottom: 0.5rem;
-    width: clamp(48px, 10vw, 60px);
-    aspect-ratio: 1;
-    border: none;
-    background: transparent;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 1000;
-  }
 
-  .bottom-right img {
-    width: 30%;
-    height: 30%;
-    object-fit: contain;
-  }
-</style>
-
-<!-- Tombol Fullscreen (Kanan Bawah) -->
+<!-- Tombol Fullscreen (Kanan Bawah dalam panel) -->
 <button id="fullscreenButton" class="bottom-right" type="button" aria-label="Buka layar penuh">
   <img src="/static/img/fs.png" alt="Layar penuh">
 </button>
