@@ -10,10 +10,83 @@
 
 {% block content %}
 
-  <div class="menu-wrap">
-    <a class="menu-card" id="menuButton" href="/nama?intro=1" aria-label="Mulai permainan">
+  <div id="introVideoOverlay" class="intro-video-overlay" style="position: fixed; inset: 0; z-index: 999999; display: flex; background: #000; cursor: pointer;">
+    <div class="intro-video-panel" style="width: 100%; height: 100%; background: #000; position: relative;">
+      <video id="introVideo" playsinline preload="auto" style="width: 100%; height: 100%; object-fit: cover; display: block; background: #000;" poster="/static/img/logo.png">
+        <source src="/video/vidio_logo.mp4" type="video/mp4">
+      </video>
+      <button id="introVideoStartButton" type="button" style="position: absolute; left: 50%; bottom: 24px; transform: translateX(-50%); padding: 0.8rem 1.5rem; border: none; border-radius: 999px; background: #f6cf64; color: #2f1d0b; font-weight: 700; cursor: pointer; box-shadow: 0 8px 18px rgba(0,0,0,0.25);">Putar video</button>
+    </div>
+  </div>
+
+  <div class="menu-wrap" style="visibility: hidden; opacity: 0; pointer-events: none; transition: opacity 0.2s ease;">
+    <a class="menu-card" id="menuButton" href="/menu" aria-label="Mulai permainan">
       <img class="menu-image" src="/static/img/mulai.png" alt="Mulai">
     </a>
   </div>
+
+  <script>
+    (function () {
+      const overlay = document.getElementById('introVideoOverlay');
+      const video = document.getElementById('introVideo');
+      const startButton = document.getElementById('introVideoStartButton');
+      const menuWrap = document.querySelector('.menu-wrap');
+
+      if (!overlay || !video) return;
+
+      const showMenu = () => {
+        if (menuWrap) {
+          menuWrap.style.visibility = 'visible';
+          menuWrap.style.opacity = '1';
+          menuWrap.style.pointerEvents = 'auto';
+        }
+        overlay.style.display = 'none';
+        overlay.style.visibility = 'hidden';
+        overlay.setAttribute('aria-hidden', 'true');
+      };
+
+      const hideMenu = () => {
+        if (menuWrap) {
+          menuWrap.style.visibility = 'hidden';
+          menuWrap.style.opacity = '0';
+          menuWrap.style.pointerEvents = 'none';
+        }
+      };
+
+      hideMenu();
+      overlay.style.display = 'flex';
+      overlay.style.visibility = 'visible';
+      overlay.setAttribute('aria-hidden', 'false');
+
+      const startIntroVideo = () => {
+        if (!startButton) return;
+        startButton.style.display = 'none';
+        video.muted = false;
+        video.volume = 1;
+        video.play().catch(() => {
+          startButton.textContent = 'Klik untuk putar';
+          startButton.style.display = 'inline-block';
+        });
+      };
+
+      if (startButton) {
+        startButton.addEventListener('click', function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          startIntroVideo();
+        });
+      }
+
+      overlay.addEventListener('click', function (event) {
+        if (event.target === overlay || event.target === video) {
+          startIntroVideo();
+        }
+      });
+
+      video.addEventListener('ended', function () {
+        showMenu();
+      }, { once: true });
+    })();
+  </script>
 
 {% endblock %}

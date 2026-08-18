@@ -276,7 +276,6 @@
 
 .page-nama .nama-screen {
   position: relative;
-  z-index: 200000 !important;
 }
 
 .nama-screen {
@@ -306,12 +305,12 @@
   position: fixed;
   inset: 0;
   z-index: 999999;
-  display: flex;
+  display: flex !important;
   align-items: center;
   justify-content: center;
   background: #ffffff;
   padding: 0;
-  visibility: visible;
+  visibility: visible !important;
 }
 
 .intro-video-overlay.hidden {

@@ -252,11 +252,11 @@ function showIntroVideo(onFinished, autoStart = false) {
   if (autoStart) {
     showOverlay();
     showPosterImmediately();
-    hideStartButton();
+    showStartButton();
     const beginAutoPlay = async () => {
-      const started = await startIntroVideo({ muted: false });
+      const started = await startIntroVideo({ muted: true });
       if (!started) {
-        // Autoplay without mute failed, allow user to start with audio.
+        // Autoplay failed or cancelled, ensure start button is visible.
         showStartButton();
       }
     };

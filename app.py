@@ -43,7 +43,7 @@ def favicon_ico():
 
 @app.route("/")
 def index():
-    return redirect("/nama?intro=1")
+    return render_template("home.html")
 
 @app.route("/nama")
 def nama():
@@ -51,7 +51,7 @@ def nama():
 
 @app.route("/home")
 def home():
-    return redirect("/nama?intro=1")
+    return render_template("home.html")
 
 @app.route("/menu")
 def menu():
