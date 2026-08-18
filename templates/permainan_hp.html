@@ -35,38 +35,13 @@
             </article>
           </div>
           <style>
-  .bottom-right {
-    position: fixed;
-    right: 0.5rem;
-    bottom: 0.5rem;
-    width: clamp(48px, 10vw, 60px);
-    aspect-ratio: 1;
-    border: none;
-    background: transparent;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 1000;
+  .permainan-page {
+    position: relative;
   }
 
-  .bottom-right img {
-    width: 30%;
-    height: 30%;
-    object-fit: contain;
-  }
-</style>
-
-<!-- Tombol Fullscreen (Kanan Bawah) -->
-<button id="fullscreenButton" class="bottom-right" type="button" aria-label="Buka layar penuh">
-  <img src="/static/img/fs.png" alt="Layar penuh">
-</button>
-
-<style>
   .icon-button {
     position: absolute;
-    top: 0.5rem;
+    top: 0;
     width: clamp(48px, 10vw, 60px);
     aspect-ratio: 1;
     border: none;
@@ -76,19 +51,42 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    z-index: 100;
   }
 
   .top-left {
-    left: 0.5rem;
+    left: 0;
   }
 
   .top-right {
-    right: 0.5rem;
+    right: 0;
   }
 
   .icon-button img {
     width: 70%;
     height: 70%;
+    object-fit: contain;
+  }
+
+  #fullscreenButton {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: clamp(48px, 10vw, 60px);
+    aspect-ratio: 1;
+    border: none;
+    background: transparent;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+  }
+
+  #fullscreenButton img {
+    width: 30%;
+    height: 30%;
     object-fit: contain;
   }
 </style>
@@ -101,6 +99,11 @@
 <!-- Home (Kanan Atas) -->
 <button class="icon-button top-right" id="profileButton" type="button" aria-label="Profil">
   <img src="/static/img/home.png" alt="">
+</button>
+
+<!-- Tombol Fullscreen (Kanan Bawah) -->
+<button id="fullscreenButton" type="button" aria-label="Buka layar penuh">
+  <img src="/static/img/fs.png" alt="Layar penuh">
 </button>
 
 
