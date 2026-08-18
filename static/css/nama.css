@@ -243,11 +243,11 @@
 
 .page-nama .brand {
   top: 2%;
-  width: min(24%, 320px);
+  width: min(26%, 340px);
 }
 
 .page-nama .brand-logo {
-  max-width: 320px;
+  max-width: 340px;
 }
 
 .page-nama .menu-wrap,
@@ -303,23 +303,22 @@
 
 .nama-screen {
   display: flex;
-  align-items: center;
-  /* do not vertically center; allow adjustable top offset via --nama-top */
-  justify-content: flex-start;
+  align-items: flex-start;
+  justify-content: center;
   min-height: 100vh;
-  padding: var(--nama-top, 40vh) 1rem 2rem;
+  padding: 1.2rem 1rem 2rem;
 }
 
 .nama-card {
   position: relative;
   max-width: 720px;
-  width: min(720px, 100%);
-  margin: auto;
-  background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f8d85a 100%);
-  border: 1px solid rgba(248, 202, 83, 0.30);
+  width: min(720px, calc(100% - 2rem));
+  margin: 2.8rem auto 0;
+  background: linear-gradient(180deg, rgba(244, 214, 102, 0.98) 0%, rgba(241, 200, 82, 0.98) 100%);
+  border: 1px solid rgba(248, 202, 83, 0.35);
   border-radius: 36px;
-  padding: 3rem 2.5rem;
-  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.20);
+  padding: 2.2rem 2.5rem 1.8rem;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.18);
   text-align: center;
   z-index: 200001 !important;
 }
@@ -396,7 +395,7 @@
 .nama-card p {
   margin: 0 0 1.5rem;
   color: #333;
-  font-size: 1rem;
+  font-size: 1.05rem;
 }
 
 .nama-form {
@@ -414,16 +413,17 @@
   width: 100%;
   padding: 1rem 1.1rem;
   border-radius: 18px;
-  border: 1px solid rgba(34, 34, 34, 0.12);
+  border: 2px solid rgba(28, 95, 129, 0.8);
   background: #fff;
   font-size: 1rem;
   color: #111;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);
 }
 
 .nama-form input:focus {
   outline: none;
-  border-color: #118ab2;
-  box-shadow: 0 0 0 4px rgba(17, 138, 178, 0.14);
+  border-color: rgba(28, 95, 129, 0.95);
+  box-shadow: 0 0 0 4px rgba(17, 138, 178, 0.12);
 }
 
 .nama-form button {
@@ -431,11 +431,12 @@
   padding: 1rem;
   border-radius: 18px;
   border: none;
-  background: #f8ca53;
+  background: linear-gradient(180deg, #f4c95a 0%, #e9b648 100%);
   color: #2b2b2b;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 700;
   cursor: pointer;
+  box-shadow: 0 10px 22px rgba(160, 120, 14, 0.18);
 }
 
 .nama-form button:hover,
