@@ -261,9 +261,9 @@
 }
 
 .page-nama #fullscreenButton {
-  position: absolute;
-  right: 0.5rem;
-  bottom: 0.5rem;
+  position: fixed;
+  right: clamp(10px, 2vw, 28px);
+  bottom: clamp(14px, 2vw, 22px);
   width: clamp(48px, 10vw, 60px);
   aspect-ratio: 1;
   border-radius: 50%;
@@ -271,7 +271,30 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 10;
+  z-index: 1000;
+}
+
+.page-nama .icon-button {
+  position: fixed;
+  top: clamp(4px, 1vh, 14px);
+  width: clamp(48px, 10vw, 60px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.page-nama .icon-button.top-left {
+  left: 50%;
+  transform: translateX(-120px);
+}
+
+.page-nama .icon-button.top-right {
+  right: 50%;
+  transform: translateX(120px);
 }
 
 .page-nama .nama-screen {

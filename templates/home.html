@@ -45,18 +45,8 @@
       video.src = videoSource;
 
       const showMenu = () => {
-        if (menuWrap) {
-          menuWrap.style.visibility = 'visible';
-          menuWrap.style.opacity = '1';
-          menuWrap.style.pointerEvents = 'auto';
-          menuWrap.style.transition = 'opacity 0.3s ease';
-        }
-        if (fallbackImage) {
-          fallbackImage.style.display = 'none';
-        }
-        overlay.style.display = 'none';
-        overlay.style.visibility = 'hidden';
-        overlay.setAttribute('aria-hidden', 'true');
+        // Redirect to nama page after video ends
+        window.location.href = '/nama';
       };
 
       const showFallback = () => {

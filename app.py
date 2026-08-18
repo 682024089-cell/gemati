@@ -3,24 +3,10 @@ import os
 from flask import url_for
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-GAME_FOLDER = os.path.join(BASE_DIR, "game 1")
+STATIC_FOLDER = os.path.join(BASE_DIR, "static")
+TEMPLATE_FOLDER = os.path.join(BASE_DIR, "templates")
 
-
-def resolve_static_folder() -> str:
-    candidates = [
-        os.path.join(BASE_DIR, "static"),
-        os.path.join(BASE_DIR, "api", "static"),
-        os.path.join(BASE_DIR, "public", "static"),
-    ]
-    for candidate in candidates:
-        if os.path.isdir(candidate):
-            return candidate
-    return os.path.join(BASE_DIR, "static")
-
-
-STATIC_FOLDER = resolve_static_folder()
-
-app = Flask(__name__, static_folder=STATIC_FOLDER, static_url_path="/static", template_folder="templates")
+app = Flask(__name__, static_folder=STATIC_FOLDER, static_url_path="/static", template_folder=TEMPLATE_FOLDER)
 
 
 @app.context_processor
@@ -33,33 +19,35 @@ def inject_asset_helpers():
 
 @app.route("/favicon.png")
 def favicon():
-    return app.send_static_file("img/logo.png")
+    return send_from_directory(STATIC_FOLDER, "img/logo.png")
 
 
 @app.route("/favicon.ico")
 def favicon_ico():
-    return app.send_static_file("img/logo.png")
+    return send_from_directory(STATIC_FOLDER, "img/logo.png")
 
 
 @app.route("/video/<path:filename>")
 def serve_video(filename):
-    video_dir = os.path.join(BASE_DIR, "static", "video")
+    """Serve video files with case-insensitive lookup for cross-platform compatibility."""
+    video_dir = os.path.join(STATIC_FOLDER, "video")
     filepath = os.path.join(video_dir, filename)
     
-    # Try exact match first
+    # Try exact match first (efficient)
     if os.path.isfile(filepath):
         return send_from_directory(video_dir, filename)
     
-    # Try case-insensitive match for cross-platform compatibility
+    # Fallback: case-insensitive match for Windows/Linux compatibility
     filename_lower = filename.lower()
     try:
-        for file in os.listdir(video_dir):
-            if file.lower() == filename_lower:
-                return send_from_directory(video_dir, file)
-    except OSError:
+        if os.path.isdir(video_dir):
+            for file in os.listdir(video_dir):
+                if file.lower() == filename_lower and os.path.isfile(os.path.join(video_dir, file)):
+                    return send_from_directory(video_dir, file)
+    except (OSError, IOError):
         pass
     
-    # Not found, return original (will trigger 404 if truly missing)
+    # Not found - let send_from_directory handle the 404
     return send_from_directory(video_dir, filename)
 
 
@@ -116,4 +104,5 @@ def status():
 
 
 if __name__ == "__main__":
+    # Use development settings locally, production settings will override via api/index.py
     app.run(host="127.0.0.1", port=5000, debug=True)
